@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from '../styles/LandingPage.module.css'
 
 const LandingPage = () => {
     const graphicURL = "https://i.ibb.co/6b2sJ5K/graphic-Landing-Page.png"
-
+    const [typeOfUser, setTypeOfUser] = useState("");
     return (
     <div class={styles.fContainer}>
-        <div class={styles.fItem}>
+        {!typeOfUser && <div class={styles.fItem}>
             <div class={styles.logoStyle}>
                 <h2 class={styles.logoFirst}>VOLUNTEER</h2>
                 <h2 class={styles.logoNext}>in</h2>
@@ -19,18 +19,27 @@ const LandingPage = () => {
                 What defines you best?
             </div>
             <img class={styles.buttonStyle} src="https://i.ibb.co/5LqcR4T/Volunteer-Button.png" width="240.625" height="76.25" onClick={() => {
-                console.log("HELLO")
+                setTypeOfUser("volunteer");
             }}/>
             <div class={styles.orFlex}>
                 <div>____________</div>
                 <div class={styles.orStyle}>or</div>
                 <div>____________</div>
             </div>
-            <img class={styles.buttonStyle} src="https://i.ibb.co/wwMVZZ4/Organization-Button.png" width="250.625" height="76.25"/>
+            <img class={styles.buttonStyle} src="https://i.ibb.co/wwMVZZ4/Organization-Button.png" width="250.625" height="76.25" onClick={() => {
+                setTypeOfUser("organization");
+            }}/>
             <div class={styles.registerDefine}>
                 
             </div>
-        </div>
+        </div>}
+
+        {typeOfUser && <div class={styles.fItem}>
+            <button className={styles.signInWithGoogle}>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/768px-Google_%22G%22_Logo.svg.png" className={styles.googleLogo}/>
+                <div>Sign in With Google</div>
+            </button>
+        </div>}
         <div class={styles.fItemRight}>
             <h3 class={styles.rightText}>Connecting for a cause.</h3>
             <img class={styles.graphicStyle} src={graphicURL} alt="None" width="483" height="419"/>
