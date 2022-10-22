@@ -1,14 +1,12 @@
 import styles from '../styles/Home.module.css'
-import NGODashboard from '../components/NGODashboard.js'
-import Header from '../components/Header'
-import DashboardText from '../components/DashboardText'
+import LandingPage from '../components/LandingPage'
+import DashboardWrapper from '../components/DashboardWrapper'
 
 export default function Home() {
   return (
     <div className={styles.container}>
-        <Header/>
-        <DashboardText text="Candidates You Have Applied To:"/>
-        <NGODashboard/>
+        {/* <DashboardWrapper/> */}
+        <LandingPage/>
     </div>
   )
 }

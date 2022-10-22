@@ -24,3 +24,13 @@ a {
     background: black;
   }
 }
+
+@font-face {
+  font-family: "Qualy_Bold";
+  src: local("Qualy"), url(../fonts/Qualy_Bold.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Garet-Book";
+  src: local("Garet"), url(../fonts/Garet-Book.ttf) format("truetype");
+}
