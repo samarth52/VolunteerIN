@@ -1,11 +1,17 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '../styles/LandingPage.module.css'
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import auth from './../utils/firebase/firebaseClient'
+import { useRouter } from 'next/router'
 
 const LandingPage = () => {
     const graphicURL = "https://i.ibb.co/6b2sJ5K/graphic-Landing-Page.png"
     const [typeOfUser, setTypeOfUser] = useState("");
+    const router = useRouter();
+
+    const createUser = () => {
+        router.push(`/${typeOfUser}/profile`)
+    }
     return (
     <div class={styles.fContainer}>
         {!typeOfUser && <div class={styles.fItem}>
@@ -21,7 +27,7 @@ const LandingPage = () => {
                 What defines you best?
             </div>
             <img class={styles.buttonStyle} src="https://i.ibb.co/5LqcR4T/Volunteer-Button.png" width="240.625" height="76.25" onClick={() => {
-                setTypeOfUser("volunteer");
+                setTypeOfUser("user");
             }}/>
             <div class={styles.orFlex}>
                 <div>____________</div>
@@ -49,7 +55,9 @@ const LandingPage = () => {
             </div>
             <button className={styles.signInWithGoogle} onClick={async () => {
                 const provider = new GoogleAuthProvider();
-                const user = await signInWithPopup(auth, provider);
+                signInWithPopup(auth, provider).then(() => {
+                    createUser()
+                })
 
             }}>
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/768px-Google_%22G%22_Logo.svg.png" className={styles.googleLogo}/>
