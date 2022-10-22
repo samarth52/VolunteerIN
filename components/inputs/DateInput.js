@@ -14,8 +14,9 @@ const DateInput = (props) => {
               } else {
                 document.getElementById("year").value = ''
               }
-
-              props.callbackFunction(new Date(year, month - 1, day))
+              if (props.callbackFunction){
+                props.callbackFunction(new Date(year, month - 1, day))
+              }
             }}/>
             <input maxLength="2" id="month" className={styles.month} placeholder="MM" onChange={(e) => {
               if (!isNaN(document.getElementById("month").value)){
@@ -23,7 +24,9 @@ const DateInput = (props) => {
               } else {
                 document.getElementById("month").value = ''
               }
-              props.callbackFunction(new Date(year, month - 1, day))
+              if (props.callbackFunction){
+                props.callbackFunction(new Date(year, month - 1, day))
+              }
 
             }}/>
             <input maxLength="2" id="day" className={styles.day} placeholder="DD" onChange={(e) => {
@@ -32,8 +35,9 @@ const DateInput = (props) => {
               } else {
                 document.getElementById("day").value = ''
               }
-              props.callbackFunction(new Date(year, month - 1, day))
-
+              if (props.callbackFunction){
+                props.callbackFunction(new Date(year, month - 1, day))
+              }
             }}/>
     </div>
   )
