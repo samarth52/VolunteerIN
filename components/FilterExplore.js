@@ -5,30 +5,40 @@ import ExploreInput from './inputs/ExploreInput';
 
 const FilterExplore = () => {
   return (
+    <div className={styles.outerContainer}>
     <div class={styles.flexContainer}>
-        <div class={styles.ageStyle}>
+        <div class={styles.ageContainer}>
             <div>Age</div>
-            <div >
-                <ExploreInput />
+            <div>
+                <ExploreInput placeholder="Min Age"/>
             </div>
             <div>to</div>
             <div >
-                <ExploreInput />
+                <ExploreInput placeholder="Max Age"/>
             </div>
         </div>
 
-        <div>Location</div>
-        <div >
-            <TextInput />
+        <div className={styles.locationContainer}>
+            <div>Location:</div>
+            <div >
+                <TextInput placeholder="Enter City / Town"/>
+            </div>
         </div>
-        <div>Yrs. of experience</div>
-        <div >
-            <ExploreInput />
+        <div className={styles.yoeContainer}>
+            <div>Yrs. of experience</div>
+            <div >
+                <ExploreInput placeholder="Min YOE"/>
+            </div>
+            <div>to</div>
+            <div >
+                <ExploreInput placeholder="Max YOE"/>
+            </div>
         </div>
-        <div>to</div>
-        <div >
-            <ExploreInput />
-        </div>
+
+        <button className={styles.submitButton}>
+                    Apply Filter
+                </button>
+                </div>
     </div>
   )
 }
