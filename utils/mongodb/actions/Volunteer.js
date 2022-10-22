@@ -1,11 +1,16 @@
 import Volunteer from "../models/Volunteer";
 
-const getFilteredVolunteers = async (email, filterQuery) => {
+const getVolunteer = async (email) => {
+  const volunteer = await Volunteer.find({ email }).populate("Experience");
+  return volunteer;
+}
+
+const getFilteredVolunteers = async (filterQuery) => {
   const volunteers = await Volunteer.find(filterQuery, "-organizations").populate("Experience");
   return volunteers;
 }
 
-const getOrganizations = async (email) => {
+const getInterestedOrganizations = async (email) => {
   const organizations = await Volunteer.find({ email }, "organizations").populate("Organization");
   return organizations;
 }
@@ -25,8 +30,9 @@ const updateVolunteer = async (email, details) => {
 }
 
 export {
+  getVolunteer,
   getFilteredVolunteers,
-  getOrganizations,
+  getInterestedOrganizations,
   createVolunteer,
   updateVolunteer,
 }

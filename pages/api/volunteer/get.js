@@ -1,5 +1,5 @@
 import requestWrapper from "../../../utils/middleware/wrapper";
-import { getVolunteers } from "../../../utils/mongodb/actions/Organization";
+import { getVolunteer } from "../../../utils/mongodb/actions/Volunteer";
 
 async function handler (req, res) {
   `
@@ -8,11 +8,10 @@ async function handler (req, res) {
       ...
     }
   `
-
-  const volunteers = await getVolunteers(req.email);
+  const volunteer = await getVolunteer(req.email);
   res.status(200).json({
     success: true,
-    payload: volunteers
+    payload: volunteer,
   });
 }
 
