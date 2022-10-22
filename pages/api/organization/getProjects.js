@@ -1,5 +1,5 @@
 import requestWrapper from "../../../utils/middleware/wrapper";
-import { getOrganizations } from "../../../utils/mongodb/actions/Volunteer";
+import { getVolunteers } from "../../../utils/mongodb/actions/Organization";
 
 async function handler (req, res) {
   `
@@ -9,8 +9,8 @@ async function handler (req, res) {
     }
   `
 
-  const organizations = await getOrganizations(req.email);
-  res.status(200).json({ payload: organizations });
+  const volunteers = await getVolunteers(req.email);
+  res.status(200).json({ payload: volunteers });
 }
 
 export default requestWrapper(handler, "GET");
