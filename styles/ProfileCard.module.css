@@ -1,0 +1,7 @@
+.flexboxCandidate {
+    width: 15em;
+    height: 16em;
+    border: 2px solid lightgray;
+    margin: 10px;
+    border-radius: 10%;
+}
