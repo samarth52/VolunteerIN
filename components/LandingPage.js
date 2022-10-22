@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import styles from '../styles/LandingPage.module.css'
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import auth from './../utils/firebase/firebaseClient'
 
 const LandingPage = () => {
     const graphicURL = "https://i.ibb.co/6b2sJ5K/graphic-Landing-Page.png"
@@ -34,11 +36,28 @@ const LandingPage = () => {
             </div>
         </div>}
 
-        {typeOfUser && <div class={styles.fItem}>
-            <button className={styles.signInWithGoogle}>
+        {typeOfUser && <div class={styles.fItemTwo}>
+            <div class={styles.logoStyle}>
+                <h2 class={styles.logoFirst}>VOLUNTEER</h2>
+                <h2 class={styles.logoNext}>in</h2>
+            </div>
+            <div class='line'>_________________________________</div>
+            <div class={styles.fontOutfit}>
+                REGISTER / LOGIN
+            </div>
+            <div class={styles.textDefine}>
+            </div>
+            <button className={styles.signInWithGoogle} onClick={async () => {
+                const provider = new GoogleAuthProvider();
+                const user = await signInWithPopup(auth, provider);
+
+            }}>
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/768px-Google_%22G%22_Logo.svg.png" className={styles.googleLogo}/>
                 <div>Sign in With Google</div>
             </button>
+            <div></div>
+            <div></div>
+
         </div>}
         <div class={styles.fItemRight}>
             <h3 class={styles.rightText}>Connecting for a cause.</h3>
