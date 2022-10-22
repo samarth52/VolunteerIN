@@ -10,7 +10,7 @@ const organizationSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  altContact: {
+  hrEmail: {
     type: String,
     required: true,
   },
