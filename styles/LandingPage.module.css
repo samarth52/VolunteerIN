@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css?family=Outfit&display=swap');
+.fContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.fItem {
+    width: 25%;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.fItemRight {
+    width: 75%;
+    height: 100vh;
+    background-color: #C1E9FF;
+}
+
+.graphicStyle {
+    margin-left: 45%;
+    margin-top: 12%;
+}
+
+.rightText {
+    font-family: "Outfit", sans-serif;
+    font-size: 225%;
+    font-weight: lighter;
+    margin: 50px;
+}
+
+.logoStyle {
+    display: flex;
+    margin-top: 10%;
+}
+
+.logoFirst {
+    font-family: "Qualy_Bold";
+}
+
+.logoNext {
+    font-family: "Garet-Book";
+    margin-top: 16.5px;
+}
+
+.line{
+    width: 100%;
+    height: 1px;
+    background-color: rgb(122, 121, 121);
+    opacity: 0.5;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Outfit&display=swap');
+.fontOutfit {
+  font-family: "Outfit", sans-serif;
+  font-size: 150%;
+  margin-top: 30px;
+}
+
+
+.textDefine {
+    font-family: "Outfit", sans-serif;
+    font-size: 200%;
+    width: 250px;
+    margin-top: 15%;
+    text-align: center;
+}
+
+.orFlex {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+.orStyle {
+    text-align: center;
+    font-family: "Outfit", sans-serif;
+    margin-top:5px;
+    margin-left:5px;
+    margin-right:5px;
+}
+
+.registerDefine {
+    font-family: "Outfit", sans-serif;
+    font-size: 150%;
+    width: 250px;
+    margin-top: 15%;
+    text-align: center;
+}
+
+
+.buttonStyle {
+    margin-top: 30px;
+    cursor: pointer;
+}
