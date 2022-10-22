@@ -8,10 +8,10 @@ async function handler (req, res) {
       ...
     }
   `
-  await createOrganization(req.email);
+  const result = await createOrganization(req.email);
   res.status(201).json({
     success: true,
-    message: "Organization has been created",
+    payload: result,
   });
 }
 

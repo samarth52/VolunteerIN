@@ -19,9 +19,9 @@ const createVolunteer = async (email) => {
   const volunteer = await Volunteer.find({ email });
   if (volunteer.length === 0) {
     const newVolunteer = await Volunteer.create({ email });
-    return newVolunteer;
+    return { new: true, volunteer: newVolunteer };
   }
-  return volunteer[0];
+  return { new: false, volunteer: volunteer[0] };
 }
 
 const updateVolunteer = async (email, details) => {

@@ -8,10 +8,10 @@ async function handler (req, res) {
       ...
     }
   `
-  await createVolunteer(req.email);
+  const result = await createVolunteer(req.email);
   res.status(201).json({
     success: true,
-    message: "Volunteer has been created"
+    payload: result,
   });
 }
 
