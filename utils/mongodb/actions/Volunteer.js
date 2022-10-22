@@ -5,6 +5,11 @@ const getFilteredVolunteers = async (email, filterQuery) => {
   return volunteers;
 }
 
+const getOrganizations = async (email) => {
+  const organizations = await Volunteer.find({ email }, "organizations").populate("Organization");
+  return organizations;
+}
+
 const createVolunteer = async (email) => {
   const newVolunteer = await Volunteer.create({ email });
   return newVolunteer;
@@ -21,6 +26,7 @@ const updateVolunteer = async (email, details) => {
 
 export {
   getFilteredVolunteers,
+  getOrganizations,
   createVolunteer,
   updateVolunteer,
 }
