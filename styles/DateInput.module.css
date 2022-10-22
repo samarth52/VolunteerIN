@@ -1,0 +1,40 @@
+.container{
+    display: flex;
+    column-gap: 10px;
+}
+
+.year{
+    flex: 20;
+    font-size: 1.1em;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: white;
+    color: black;
+    font-family: 'Outfit';
+    border: 2px solid rgba(0, 0, 0, 0.38);
+}
+
+.month{
+    flex: 1;
+    font-size: 1.1em;
+
+    padding: 10px;
+    color: black;
+    background-color: white;
+    border: 2px solid rgba(0, 0, 0, 0.38);
+    border-radius: 5px;
+    font-family: 'Outfit';
+} 
+
+.day{
+    flex: 1;
+    font-size: 1.1em;
+
+    padding: 10px;
+    border-radius: 5px;
+    background-color: white;
+    border: 2px solid rgba(0, 0, 0, 0.38);
+    color: black;
+    font-family: 'Outfit';
+
+}
