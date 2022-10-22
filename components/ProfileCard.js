@@ -1,13 +1,13 @@
 import React from 'react'
 import styles from "../styles/ProfileCard.module.css";
 
-const ProfileCard = () => {
+const ProfileCard = ({img, name, job, exp}) => {
   return (
     <div class={styles.flexboxCandidate}>
-        <img src="https://i.ibb.co/1ncn6Hh/ngoLogo3.jpg" class={styles.imageStyle} width="100" height="100"/>
-        <h2 class={styles.profileText}>Samrat Sahoo</h2>
-        <h3 class={styles.profileText2}>Software Engineer</h3>
-        <h3 class={styles.profileText3}>10 Years of Experience</h3>
+        <img src={img} class={styles.imageStyle} width="100" height="100"/>
+        <h2 class={styles.profileText}>{name}</h2>
+        <h3 class={styles.profileText2}>{job}</h3>
+        <h3 class={styles.profileText3}>{exp}</h3>
     </div>
   )
 }
