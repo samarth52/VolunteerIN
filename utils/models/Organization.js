@@ -10,6 +10,10 @@ const organizationSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  altContact: {
+    type: String,
+    required: true,
+  },
   description: String,
   logo: String,
   website: String,
@@ -20,6 +24,18 @@ const organizationSchema = new mongoose.Schema({
       enum: INTEREST_ENUM,
     }
   ],
+  volunteers: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "Volunteer",
+    }
+  ],
+  projects: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "Project",
+    },
+  ]
 })
 
 const Organization = mongoose.models.Organization || mongoose.model("Organization", organizationSchema);

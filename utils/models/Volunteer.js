@@ -14,17 +14,29 @@ const volunteerSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  dob: Date,
+  description: String,
+  years: Number,
+  photo: String,
+  location: String,
   interests: [
     {
       type: String,
       enum: INTEREST_ENUM,
     }
   ],
-  years: Number,
-  description: String,
-  photo: String,
-  location: String,
-  dob: Date,
+  organizations: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "Organization",
+    }
+  ],
+  experience: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "Experience",
+    },
+  ],
 })
 
 const Volunteer = mongoose.models.Volunteer || mongoose.model("Volunteer", volunteerSchema);
