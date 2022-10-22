@@ -32,6 +32,8 @@ const FIREBASE_SERVER_CONFIG = {
   clientEmail: process.env.FIREBASE_SERVER_CLIENT_EMAIL,
 };
 
+FIREBASE_SERVER_CONFIG.privateKey = FIREBASE_SERVER_CONFIG.privateKey.split("\\n").join("\n");
+
 export {
   MONGODB_URL,
   INTEREST_ENUM,
