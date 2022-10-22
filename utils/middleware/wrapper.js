@@ -11,6 +11,7 @@ export default function requestWrapper(handler, method) {
       req.email = await verifyToken(idToken);
       return handler(req, res);
     } catch (error) {
+      console.log(error);
       return res.status(401).json({ message: "Authentication Failure: User is not logged in" });
     };
   };
