@@ -24,3 +24,25 @@ a {
     background: black;
   }
 }
+
+@font-face {
+  font-family: "DM-Sans";
+  src: local("DM-Sans"), url(../fonts/DMSans-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "DM-Sans-Bold";
+  src: local("DM-Sans"), url(../fonts/DMSans-Bold.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "DM-Sans-Medium";
+  src: local("DM-Sans"), url(../fonts/DMSans-Medium.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "DM-Sans-Italic";
+  src: local("DM-Sans"), url(../fonts/DMSans-Italic.ttf) format("truetype");
+}
+
+@import url('https://fonts.googleapis.com/css?family=Outfit&display=swap');

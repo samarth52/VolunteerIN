@@ -1,0 +1,10 @@
+.container{
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: white;
+    border: 2px solid rgba(0, 0, 0, 0.38);
+    color: black;
+    font-family: 'Outfit';
+    font-size: 1.1em;
+}
