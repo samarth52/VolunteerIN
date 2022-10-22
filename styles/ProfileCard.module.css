@@ -1,7 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Outfit&display=swap');
 .flexboxCandidate {
+    display: flex;
+    flex-direction: column;
     width: 15em;
     height: 16em;
     border: 2px solid lightgray;
     margin: 10px;
     border-radius: 10%;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.imageStyle {
+    border-radius: 50%;
+    margin-top: -80px;
+}
+
+.profileText {
+    font-family: "Outfit", sans-serif;
+    font-size: 100%;
+}
+
+.profileText2 {
+    font-family: "Outfit", sans-serif;
+    font-size: 100%;
+    opacity: 0.75;
+    margin-top: 0px;
+}
+
+.profileText3 {
+    font-family: "Outfit", sans-serif;
+    font-size: 100%;
+    opacity: 0.75;
+    padding-bottom: 10px;
 }
