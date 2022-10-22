@@ -1,6 +1,3 @@
-import dotenv from "dotenv";
-dotenv.config();
-
 const { MONGODB_URL } = process.env;
 
 const INTEREST_ENUM = [
@@ -28,11 +25,9 @@ const FIREBASE_CLIENT_CONFIG = {
 
 const FIREBASE_SERVER_CONFIG = {
   projectId: process.env.FIREBASE_SERVER_PROJECT_ID,
-  privateKey: process.env.FIREBASE_SERVER_PRIVATE_KEY,
   clientEmail: process.env.FIREBASE_SERVER_CLIENT_EMAIL,
+  privateKey: process.env.FIREBASE_SERVER_PRIVATE_KEY
 };
-
-FIREBASE_SERVER_CONFIG.privateKey = FIREBASE_SERVER_CONFIG.privateKey.split("\\n").join("\n");
 
 export {
   MONGODB_URL,
