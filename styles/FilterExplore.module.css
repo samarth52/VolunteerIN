@@ -1,0 +1,16 @@
+.flexContainer {
+    display: flex;
+    height: 100px;
+    background-color: #C1E9FF;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.textInputStyle {
+    height: 30px;
+    width: 20%;
+}
+
+.ageStyle {
+    display: flex;
+}

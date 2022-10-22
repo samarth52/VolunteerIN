@@ -1,12 +1,12 @@
 import React from 'react'
-import Header from './Header'
-import DashboardText from './DashboardText'
-import NGODashboard from './NGODashboard'
+import Header from '../../components/Header'
+import DashboardText from '../../components/DashboardText'
+import NGODashboard from '../../components/NGODashboard'
 
 const DashboardWrapper = () => {
   return (
     <div>
-        <Header/>
+        <Header logoTitle="VolunteerIN"/>
         <DashboardText text="Candidates You Have Applied To:"/>
         <NGODashboard/>
     </div>
