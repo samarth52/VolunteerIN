@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Outfit&display=swap');
+.header {
+    display: flex;
+    flex-direction: row;
+    height: 80px;
+    width: auto;
+    border-bottom: 2px solid;
+    background-color: rgba(2, 34, 71, 1)
+}
+
+.logo {
+    font-family: "Outfit", sans-serif;
+    font-size: 150%;
+    color: white;
+    padding-top: 25px;
+    padding-left: 5%;
+}
+
+.flexContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-left: auto;
+
+}
+.headerText {
+    color: white;
+    padding-right: 50px;
+    font-family: "Outfit", sans-serif;
+}
