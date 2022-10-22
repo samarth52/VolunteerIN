@@ -1,7 +1,6 @@
 import requestWrapper from "../../../utils/middleware/wrapper";
-import { getFilteredVolunteers } from "../../../utils/mongodb/actions/Volunteer";
+import { getFilteredVolunteers, updateVolunteer } from "../../../utils/mongodb/actions/Volunteer";
 import { createExperience } from "../../../utils/mongodb/actions/Experience";
-import { updateVolunteer } from "../../../utils/mongodb/actions/Volunteer";
 
 async function handler (req, res) {
   `
@@ -53,7 +52,7 @@ async function handler (req, res) {
     }
   }
 
-  const volunteers = await getFilteredVolunteers(req.email, filterQuery);
+  const volunteers = await getFilteredVolunteers(filterQuery);
   res.status(200).json({
     success: true,
     payload: volunteers

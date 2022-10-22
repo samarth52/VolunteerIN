@@ -1,6 +1,11 @@
 import Organization from "../models/Organization";
 
-const getVolunteers = async (email) => {
+const getOrganization = async (email) => {
+  const organization = await Organization.find({ email }).populate("Project");
+  return organization;
+}
+
+const getInterestedVolunteers = async (email) => {
   const volunteers = await Organization.find({ email }, "volunteers").populate("Volunteer");
   return volunteers;
 }
@@ -20,7 +25,8 @@ const updateOrganization = async (email, details) => {
 }
 
 export {
-  getVolunteers,
+  getOrganization,
+  getInterestedVolunteers,
   createOrganization,
   updateOrganization,
 }
