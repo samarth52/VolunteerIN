@@ -9,7 +9,10 @@ async function handler (req, res) {
     }
   `
   await createOrganization(req.email);
-  res.status(201).json({ message: "Organization has been created" });
+  res.status(201).json({
+    success: true,
+    message: "Organization has been created",
+  });
 }
 
 export default requestWrapper(handler, "POST");

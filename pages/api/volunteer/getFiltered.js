@@ -54,7 +54,10 @@ async function handler (req, res) {
   }
 
   const volunteers = await getFilteredVolunteers(req.email, filterQuery);
-  res.status(200).json({ payload: volunteers });
+  res.status(200).json({
+    success: true,
+    payload: volunteers
+  });
 }
 
 export default requestWrapper(handler, "GET");

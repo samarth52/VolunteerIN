@@ -36,7 +36,10 @@ async function handler (req, res) {
   })
   await updateOrganization(req.email, organization);
   
-  res.status(204).json({ message: "Organization has been updated" });
+  res.status(204).json({
+    success: true,
+    message: "Organization has been updated",
+  });
 }
 
 export default requestWrapper(handler, "PUT");

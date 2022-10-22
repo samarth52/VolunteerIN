@@ -38,7 +38,10 @@ async function handler (req, res) {
   })
   await updateVolunteer(req.email, volunteer);
   
-  res.status(204).json({ message: "Volunteer has been updated" });
+  res.status(204).json({
+    success: true,
+    message: "Volunteer has been updated",
+  });
 }
 
 export default requestWrapper(handler, "PUT");

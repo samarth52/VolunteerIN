@@ -9,7 +9,10 @@ async function handler (req, res) {
     }
   `
   await createVolunteer(req.email);
-  res.status(201).json({ message: "Volunteer has been created" });
+  res.status(201).json({
+    success: true,
+    message: "Volunteer has been created"
+  });
 }
 
 export default requestWrapper(handler, "POST");

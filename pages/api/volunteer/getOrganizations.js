@@ -10,7 +10,10 @@ async function handler (req, res) {
   `
 
   const organizations = await getOrganizations(req.email);
-  res.status(200).json({ payload: organizations });
+  res.status(200).json({
+    success: true,
+    payload: organizations,
+  });
 }
 
 export default requestWrapper(handler, "GET");
