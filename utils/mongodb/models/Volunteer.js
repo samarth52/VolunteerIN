@@ -31,7 +31,7 @@ const volunteerSchema = new mongoose.Schema({
       ref: "Organization",
     }
   ],
-  experience: [
+  experiences: [
     {
       type: mongoose.Types.ObjectId,
       ref: "Experience",
