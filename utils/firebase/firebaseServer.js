@@ -1,7 +1,7 @@
 import { credential } from "firebase-admin";
 import { getApp, getApps, initializeApp } from "firebase-admin/app";
 import { getAuth } from "firebase-admin/auth";
-import { FIREBASE_SERVER_CONFIG } from "../constants";
+import { FIREBASE_SERVER_CONFIG } from "../serverConstants";
 
 let app;
 if (getApps().length === 0) {

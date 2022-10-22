@@ -3,14 +3,16 @@ import styles from '../styles/LandingPage.module.css'
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import auth from './../utils/firebase/firebaseClient'
 import { useRouter } from 'next/router'
+import sendRequest from "../utils/client/sendToBackend";
 
 const LandingPage = () => {
     const graphicURL = "https://i.ibb.co/6b2sJ5K/graphic-Landing-Page.png"
     const [typeOfUser, setTypeOfUser] = useState("");
     const router = useRouter();
 
-    const createUser = () => {
-        router.push(`/${typeOfUser}/profile`)
+    const createUser = async () => {
+        router.push(`/${typeOfUser}/profile`);
+        await sendRequest("volunteer/add", "POST");
     }
     return (
     <div class={styles.fContainer}>

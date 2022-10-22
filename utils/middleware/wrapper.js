@@ -1,3 +1,4 @@
+import mongoConnect from "../dbConnect";
 import verifyToken from "../firebase/verify";
 
 export default function requestWrapper(handler, method) {
@@ -9,9 +10,10 @@ export default function requestWrapper(handler, method) {
       });
     }
 
-    const { idToken } = req.headers;
+    const idToken = req.headers.idtoken;
     try {
       req.email = await verifyToken(idToken);
+      await mongoConnect();
       return handler(req, res);
     } catch (error) {
       console.log(error);

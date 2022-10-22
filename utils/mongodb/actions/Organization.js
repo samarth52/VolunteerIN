@@ -11,8 +11,12 @@ const getInterestedVolunteers = async (email) => {
 }
 
 const createOrganization = async (email) => {
-  const newOrganization = await Organization.create({ email });
-  return newOrganization;
+  const organization = await Organization.find({ email });
+  if (organization.length === 0) {
+    const newOrganization = await Organization.create({ email });
+    return newOrganization;
+  }
+  return organization[0];
 }
 
 const updateOrganization = async (email, details) => {
