@@ -10,14 +10,4 @@ if (getApps().length === 0) {
 }
 
 const auth = getAuth(app);
-
-const decodeIdToken = async (idToken) => {
-  const decodedToken = await auth.verifyIdToken(idToken);
-  console.log(decodedToken);
-  return decodedToken.email;
-};
-
-export {
-  auth,
-  decodeIdToken,
-};
+export default auth;
