@@ -10,14 +10,14 @@ const volunteerSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  emailId: {
+  email: {
     type: String,
     required: true,
   },
-  experiences: [
+  interests: [
     {
       type: String,
-      enum: EXPERIENCE_ENUM,
+      enum: INTEREST_ENUM,
     }
   ],
   years: Number,

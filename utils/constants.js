@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 dotenv.config()
 
 const { MONGODB_URL } = process.env
-const EXPERIENCE_ENUM = [
+const INTEREST_ENUM = [
   "Aid",
   "Design",
   "Distribution",
@@ -18,5 +18,5 @@ const EXPERIENCE_ENUM = [
 
 export {
   MONGODB_URL,
-  EXPERIENCE_ENUM,
+  INTEREST_ENUM,
 }
