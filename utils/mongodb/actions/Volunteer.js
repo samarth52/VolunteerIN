@@ -1,7 +1,7 @@
 import Volunteer from "../models/Volunteer";
 
-const createVolunteer = async (volunteer) => {
-  const newVolunteer = await Volunteer.create(volunteer);
+const createVolunteer = async (email) => {
+  const newVolunteer = await Volunteer.create({ email });
   return newVolunteer;
 }
 
