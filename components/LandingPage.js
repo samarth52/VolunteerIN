@@ -13,7 +13,7 @@ const LandingPage = () => {
             </div>
             <div class='line'>_________________________________</div>
             <div class={styles.fontOutfit}>
-                REGISTER
+                REGISTER / LOGIN
             </div>
             <div class={styles.textDefine}>
                 What defines you best?
@@ -28,7 +28,7 @@ const LandingPage = () => {
             </div>
             <img class={styles.buttonStyle} src="https://i.ibb.co/wwMVZZ4/Organization-Button.png" width="250.625" height="76.25"/>
             <div class={styles.registerDefine}>
-                Already registered? Sign in instead.
+                
             </div>
         </div>
         <div class={styles.fItemRight}>
