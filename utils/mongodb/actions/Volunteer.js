@@ -5,10 +5,10 @@ const createVolunteer = async (email) => {
   return newVolunteer;
 }
 
-const updateVolunteer = async (email, volunteer) => {
+const updateVolunteer = async (email, details) => {
   const newVolunteer = await Volunteer.updateOne(
     { email },
-    volunteer,
+    details,
     { new: true },
   );
   return newVolunteer;

@@ -6,4 +6,4 @@ async function handler (req, res) {
   res.status(201).json({ message: "Volunteer has been created" });
 }
 
-export default requestWrapper(handler, "GET");
+export default requestWrapper(handler, "POST");
