@@ -1,0 +1,48 @@
+.outerContainer{
+    background-color: #C1E9FF;
+
+}
+
+.flexContainer {
+    display: flex;
+    height: 100px;
+    background-color: #C1E9FF;
+    justify-content: flex-start;
+    column-gap: 30px;
+    margin-left: 30px;
+    align-items: center;
+}
+
+.textInputStyle {
+    height: 30px;
+    width: 20%;
+}
+
+.ageContainer {
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+}
+
+.locationContainer{
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+}
+
+.yoeContainer{
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+}
+
+.submitButton{
+    background-color: #022247;
+    padding: 10px;
+    border-radius: 15px;
+    font-family: 'Outfit';
+    font-size: 1.2em;
+    color: white;
+    margin-left: auto;
+    margin-right: 30px;
+}
