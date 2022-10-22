@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { EXPERIENCE_ENUM } from "../constants";
 
-const userSchema = new mongoose.Schema({
+const volunteerSchema = new mongoose.Schema({
   firstName: {
     type: String,
     required: true,
@@ -27,5 +27,5 @@ const userSchema = new mongoose.Schema({
   dob: Date,
 })
 
-const User = mongoose.models.User || mongoose.model("User", userSchema);
-export default User;
+const Volunteer = mongoose.models.Volunteer || mongoose.model("Volunteer", volunteerSchema);
+export default Volunteer;
