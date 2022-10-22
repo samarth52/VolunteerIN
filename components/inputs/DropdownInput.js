@@ -42,8 +42,9 @@ const DropDownInput = (props) => {
           } else {
             setFieldValue("Many Options Selected");
           }
-
-          props.callbackFunction([...selectedOptionsCopy])
+          if (props.callbackFunction){
+            props.callbackFunction([...selectedOptionsCopy])
+          }
         }}>
           <div>{option}</div>
           {selectedOptions.has(option) && <IoMdCheckmark style={{color: 'black', fontSize: "1.4em", marginLeft: "auto"}}/>}
