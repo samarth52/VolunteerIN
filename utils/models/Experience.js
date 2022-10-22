@@ -27,5 +27,13 @@ const experienceSchema = new mongoose.Schema({
   },
 });
 
+experienceSchema.set('toJSON', {
+  transform: (document, returnedObject) => {
+    returnedObject.id = returnedObject._id.toString()
+    delete returnedObject._id
+    delete returnedObject.__v
+  },
+});
+
 const Experience = mongoose.models.Experience || mongoose.model("Experience", experienceSchema);
 export default Experience;

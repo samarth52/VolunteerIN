@@ -36,7 +36,15 @@ const organizationSchema = new mongoose.Schema({
       ref: "Project",
     },
   ]
-})
+});
+
+organizationSchema.set('toJSON', {
+  transform: (document, returnedObject) => {
+    returnedObject.id = returnedObject._id.toString()
+    delete returnedObject._id
+    delete returnedObject.__v
+  },
+});
 
 const Organization = mongoose.models.Organization || mongoose.model("Organization", organizationSchema);
 export default Organization;
