@@ -1,10 +1,48 @@
 .container{
+    display: flex;
+    flex-direction: column;
+}
+.fieldContainer{
+    display: flex;
     background-color: white;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: white;
+    border-radius: 10px;
+    border-width: 0.5;
+    padding: 10;
     border: 2px solid rgba(0, 0, 0, 0.38);
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.notSelected{
+    color: black;
+    opacity: 0.5;
+    font-family: 'Outfit';
+    font-size: 1.1em;
+}
+
+.selected{
     color: black;
     font-family: 'Outfit';
     font-size: 1.1em;
+}
+
+.dropDownContainer{
+    display: flex;
+    flex-direction: column;
+    border-top: 0px !important;
+    border: 2px solid rgba(0, 0, 0, 0.38);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.optionContainer{
+    color: black;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+}
+.optionContainer:hover{
+    opacity: 0.5;
 }

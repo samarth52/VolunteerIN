@@ -1,8 +1,8 @@
 import { useState } from "react";
-import ExperienceSection from "../../components/ExperienceSection";
-import styles from "../../styles/UserExperience.module.css";
+import ProjectSection from "../../components/ProjectSection";
+import styles from "../../styles/OrganizationProjects.module.css";
 
-const UserExperiencePage = () => {
+const OrganizationProjectsPage = () => {
 
     const [experiencesCount, setExperiencesCount] = useState(1);
     return (
@@ -10,18 +10,18 @@ const UserExperiencePage = () => {
             <div className={styles.innerContainer}>
                 <div className={styles.inputContainer}>
                     <div className={styles.header}>
-                    Let’s Talk About Your Experiences:
+                    Let’s Talk About Your Orgranization’s Projects:
                     </div>
 
                     <div className={styles.addNew} onClick={() => {
                         setExperiencesCount(experiencesCount + 1)
                         console.log(experiencesCount)
-                    }}> Add An Experience </div>
+                    }}> Add A Project </div>
                     {[...Array(experiencesCount)].map((value, index) => {
-                        return (<ExperienceSection key={index} />)
+                        return (<ProjectSection key={index} />)
                     })}
                     <button className={styles.submitButton}>
-                    Submit Experience Information
+                    Submit Project Information
                 </button>
 
                     </div>
@@ -31,4 +31,4 @@ const UserExperiencePage = () => {
     )
 }
 
-export default UserExperiencePage;
+export default OrganizationProjectsPage;

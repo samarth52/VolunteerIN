@@ -44,7 +44,9 @@ const UserProfilePage = () => {
                 <div className={styles.inputRow}>
                 <div className={styles.headerInputCombo}>
                     <div className={styles.subheaderText}>Interests / Expertise?<span className={styles.required}>*</span></div>
-                        <DropdownInput options={["Software Engineering", "Operations","Fundraising", "General / Other","Volunteering", 
+                        <DropdownInput 
+                        placeHolder={"Select Your Expertise(s)"}
+                        options={["Software Engineering", "Operations","Fundraising", "General / Other","Volunteering", 
                                                 "Management"]}/>
                     </div>
                 </div>

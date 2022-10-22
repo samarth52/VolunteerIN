@@ -27,7 +27,9 @@ const OrganizationProfilePage = () => {
                 <div className={styles.inputRow}>
                 <div className={styles.headerInputCombo}>
                     <div className={styles.subheaderText}>Volunteer Expertise Needed?<span className={styles.required}>*</span></div>
-                        <DropdownInput options={["Software Engineering", "Operations","Fundraising", "General / Other","Volunteering", 
+                        <DropdownInput 
+                        placeHolder="Select The Types of Volunteers You Need"
+                        options={["Software Engineering", "Operations","Fundraising", "General / Other","Volunteering", 
                                                 "Management"]}/>
                     </div>
                 </div>
@@ -35,8 +37,8 @@ const OrganizationProfilePage = () => {
 
                 <div className={styles.inputRow}>
                     <div className={styles.headerInputCombo}>
-                        <div className={styles.subheaderText}>Alternate Contact<span className={styles.required}>*</span></div>
-                        <TextInput placeholder="Enter an Alternate Contact Info"/>
+                        <div className={styles.subheaderText}>Human Resources Email<span className={styles.required}>*</span></div>
+                        <TextInput placeholder="Enter a HR Email"/>
                     </div>
                     <div className={styles.headerInputCombo}>
                         <div className={styles.subheaderText}>Location<span className={styles.required}>*</span></div>

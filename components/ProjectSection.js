@@ -1,22 +1,22 @@
 import React, {useState} from 'react'
-import styles from "../styles/ExperienceSection.module.css";
+import styles from "../styles/ProjectSection.module.css";
 import DateInput from './inputs/DateInput';
 import LongTextInput from './inputs/LongTextInput';
 import TextInput from './inputs/TextInput';
 
-const ExperienceSection = (props) => {
+const ProjectSection = (props) => {
 
   const [currentlyWork, setCurrentlyWork] = useState(false);
   return (
     <div className={styles.container}>
                 <div className={styles.inputRow}>
                     <div className={styles.headerInputCombo}>
-                        <div className={styles.subheaderText}>Organization Name<span className={styles.required}>*</span></div>
-                        <TextInput placeholder="Enter Your Organization Name"/>
+                        <div className={styles.subheaderText}>Project Name<span className={styles.required}>*</span></div>
+                        <TextInput placeholder="Enter Project Name"/>
                     </div>
                     <div className={styles.headerInputCombo}>
-                        <div className={styles.subheaderText}>Title<span className={styles.required}>*</span></div>
-                        <TextInput placeholder="Enter Your Title"/>
+                        <div className={styles.subheaderText}>Location<span className={styles.required}>*</span></div>
+                        <TextInput placeholder="Enter Project Location"/>
                     </div>
                 </div>
 
@@ -40,7 +40,7 @@ const ExperienceSection = (props) => {
                               setCurrentlyWork(true);
                             }
                           }}/>
-                          <div>I currently work here</div>
+                          <div>This Project is Ongoing</div>
                         </div>
                         </div>
                         {!currentlyWork && <DateInput/>}
@@ -60,4 +60,4 @@ const ExperienceSection = (props) => {
   )
 }
 
-export default ExperienceSection;
+export default ProjectSection;
