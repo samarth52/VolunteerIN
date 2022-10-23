@@ -1,5 +1,6 @@
 import requestWrapper from "../../../utils/middleware/wrapper";
 import { getFilteredVolunteers, getAllVolunteers, updateVolunteer } from "../../../utils/mongodb/actions/Volunteer";
+import { getInterestedVolunteersId } from "../../../utils/mongodb/actions/Organization";
 import { createExperience } from "../../../utils/mongodb/actions/Experience";
 
 async function handler (req, res) {
@@ -19,10 +20,11 @@ async function handler (req, res) {
   `
 
   const { ageMin, ageMax, yearsMin, yearsMax, interests, location } = req.body;
-
+  const chosenVolunteersId = await getInterestedVolunteersId(req.email);
   const filterQuery = {
     dob: {},
     years: {},
+    "_id": { "$nin": chosenVolunteersId },
   }
 
   const currDate = new Date();
@@ -55,24 +57,10 @@ async function handler (req, res) {
   }
 
   const volunteers = await getFilteredVolunteers(filterQuery);
-  const interestVolunteers = [];
-
-  // if (interests) {
-  //   const allVolunteers = await getAllVolunteers();
-  // 
-  //   for (const individual of allVolunteers){
-  //     const filteredArray = individual.interests.filter(value => interests.includes(value));
-  // 
-  //     if (filteredArray.length !== 0){
-  //       interestVolunteers.push(individual.populate("experiences"))
-  //     }
-  //   }
-  // }
-  const combined = [...volunteers, ...interestVolunteers];
 
   res.status(200).json({
     success: true,
-    payload: combined
+    payload: volunteers,
   });
 }
 
