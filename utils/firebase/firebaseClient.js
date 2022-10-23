@@ -1,6 +1,6 @@
 import { getAuth } from "firebase/auth";
 import { getApp, getApps, initializeApp } from "firebase/app";
-import { FIREBASE_CLIENT_CONFIG } from "../constants";
+import FIREBASE_CLIENT_CONFIG from "../clientConstants";
 
 let app;
 if (getApps().length === 0) {

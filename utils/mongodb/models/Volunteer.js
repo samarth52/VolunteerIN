@@ -1,14 +1,12 @@
 import mongoose from "mongoose";
-import { EXPERIENCE_ENUM } from "../constants";
+import { INTEREST_ENUM } from "../../serverConstants";
 
 const volunteerSchema = new mongoose.Schema({
   firstName: {
     type: String,
-    required: true,
   },
   lastName: {
     type: String,
-    required: true,
   },
   email: {
     type: String,

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styles from "../styles/NGODashboard.module.css";
 import ProfileCard from './ProfileCard';
 
-const NGODashboard = () => {
+const Dashboard = () => {
 
   const [profiles, setProfiles] = useState([])
 
@@ -19,11 +19,11 @@ const NGODashboard = () => {
 
   return (
     <div class={[styles.flexboxContainer]}>
-        {mockData.map((profile) => (
-          <ProfileCard img={profile.img} name={profile.name} job={profile.job} exp={profile.exp}/>
+        {mockData.map((profile, index) => (
+          <ProfileCard key={index} img={profile.img} name={profile.name} job={profile.job} exp={profile.exp}/>
         ))}
     </div>
   )
 }
 
-export default NGODashboard
+export default Dashboard

@@ -1,10 +1,9 @@
 import mongoose from "mongoose";
-import { INTEREST_ENUM } from "../constants";
+import { INTEREST_ENUM } from "../../serverConstants";
 
 const organizationSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
   },
   email: {
     type: String,
@@ -12,7 +11,6 @@ const organizationSchema = new mongoose.Schema({
   },
   hrEmail: {
     type: String,
-    required: true,
   },
   description: String,
   logo: String,

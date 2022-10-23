@@ -31,14 +31,15 @@ async function handler (req, res) {
       ...
     }
   `
-  const { volunteer } = req.data;
-
-  volunteer.experiences.forEach(async (experience, i) => {
-    volunteer.experiences[i] = await createExperience(experience);
-  })
+  const { volunteer } = req.body;
+  if (volunteer.experiences) {
+    for (let i = 0; i < volunteer.experiences.length; i++) {
+      volunteer.experiences[i] = await createExperience(volunteer.experiences[i]);
+    }
+  }
   await updateVolunteer(req.email, volunteer);
   
-  res.status(204).json({
+  res.status(203).json({
     success: true,
     message: "Volunteer has been updated",
   });
