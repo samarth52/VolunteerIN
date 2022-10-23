@@ -32,7 +32,19 @@ const ProfileDetailModal = (props) => {
             </div>
 
             <div className={styles.buttonContainer}>
-            <button className={styles.button}>
+            <button className={styles.backButton} onClick={() => {
+                if (props.modalCallback){
+                    props.modalCallback(false);
+                }
+            }}>
+                Go Back
+            </button>
+
+            <button className={styles.button} onClick={() => {
+                if (props.modalCallback){
+                    props.modalCallback(false);
+                }
+            }}>
                 Connect
             </button>
             </div>

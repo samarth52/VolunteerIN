@@ -51,6 +51,7 @@ const ProfileCard = ({img, name, job, exp}) => {
         title: "Engineering Manager",
       "years": 15}
           ]}
+          modalCallback={(value) => setIsOpen(value)}
         ></ProfileDetailModal>
 
       </Modal>
