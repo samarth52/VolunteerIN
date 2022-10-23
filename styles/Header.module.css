@@ -28,4 +28,9 @@
     color: white;
     padding-right: 50px;
     font-family: "Outfit", sans-serif;
+    cursor: pointer;
+}
+
+.headerText:hover{
+    color: #C1E9FF
 }
