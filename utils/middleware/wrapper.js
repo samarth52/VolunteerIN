@@ -1,6 +1,11 @@
 import mongoConnect from "../dbConnect";
 import verifyToken from "../firebase/verify";
 
+import Experience from "../mongodb/models/Experience";
+import Organization from "../mongodb/models/Organization";
+import Project from "../mongodb/models/Project";
+import Volunteer from "../mongodb/models/Volunteer";
+
 export default function requestWrapper(handler, method) {
   return async (req, res) => {
     if (req.method !== method) {
