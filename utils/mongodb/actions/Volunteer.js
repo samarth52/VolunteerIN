@@ -10,6 +10,11 @@ const getVolunteerById = async (volunteerId) => {
   return volunteer;
 } 
 
+const getAllVolunteers = async () => {
+  const volunteers = await Volunteer.find({})
+  return volunteers;
+}
+
 const getFilteredVolunteers = async (filterQuery) => {
   const volunteers = await Volunteer.find(filterQuery, "-organizations").populate("experiences");
   return volunteers;

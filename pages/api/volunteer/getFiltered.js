@@ -1,5 +1,5 @@
 import requestWrapper from "../../../utils/middleware/wrapper";
-import { getFilteredVolunteers, updateVolunteer } from "../../../utils/mongodb/actions/Volunteer";
+import { getFilteredVolunteers, getAllVolunteers, updateVolunteer } from "../../../utils/mongodb/actions/Volunteer";
 import { createExperience } from "../../../utils/mongodb/actions/Experience";
 
 async function handler (req, res) {
@@ -56,14 +56,25 @@ async function handler (req, res) {
   console.log(filterQuery);
 
   const volunteers = await getFilteredVolunteers(filterQuery);
+  const interestVolunteers = [];
 
   if (interests) {
-    filterQuery.interests = { "$in": interests }
+    const allVolunteers = await getAllVolunteers();
+
+    for (const individual of allVolunteers){
+      const filteredArray = individual.interests.filter(value => interests.includes(value));
+
+      if (filteredArray.length !== 0){
+        interestVolunteers.push(individual.populate("experiences"))
+      }
+    }
   }
+  console.log(interestVolunteers);
+  const combined = [...volunteers, ...interestVolunteers];
 
   res.status(200).json({
     success: true,
-    payload: volunteers
+    payload: combined
   });
 }
 
