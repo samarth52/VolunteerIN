@@ -16,8 +16,8 @@ const ProfileCard = ({img, name, job, exp}) => {
   const customStyles = {
     content: {
       display: "flex",
-      left: "25%",
-      width: "50%"
+      left: "16.5%",
+      width: "67%",
     },
   };
 
@@ -51,6 +51,7 @@ const ProfileCard = ({img, name, job, exp}) => {
         title: "Engineering Manager",
       "years": 15}
           ]}
+          modalCallback={(value) => setIsOpen(value)}
         ></ProfileDetailModal>
 
       </Modal>
@@ -59,5 +60,3 @@ const ProfileCard = ({img, name, job, exp}) => {
 }
 
 export default ProfileCard
-
-// "https://i.ibb.co/Y3QvCYc/ngoLogo2.jpg"
