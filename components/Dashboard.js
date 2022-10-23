@@ -11,7 +11,6 @@ const sleep = () => new Promise(
 const Dashboard = ({ role, isExplore, filter }) => {
 
   const [profiles, setProfiles] = useState([]);
-  console.log('Profile', profiles);
   const lastField = role === "volunteer" ? "location" : "years";
 
   useEffect(() => {

@@ -21,16 +21,16 @@ async function handler (req, res) {
   const { ageMin, ageMax, yearsMin, yearsMax, interests, location } = req.body;
 
   const filterQuery = {
-    age: {},
+    dob: {},
     years: {},
   }
 
   const currDate = new Date();
   if (ageMin) {
-    filterQuery.age["$gte"] = new Date(currDate.getFullYear() - ageMin, curr.getMonth(), curr.getDate());
+    filterQuery.dob["$lte"] = new Date(currDate.getFullYear() - ageMin, currDate.getMonth(), currDate.getDate());
   }
   if (ageMax) {
-    filterQuery.age["$lte"] = new Date(currDate.getFullYear() - ageMax, curr.getMonth(), curr.getDate());
+    filterQuery.dob["$gte"] = new Date(currDate.getFullYear() - ageMax, currDate.getMonth(), currDate.getDate());
   }
 
   if (yearsMin) {
@@ -42,19 +42,20 @@ async function handler (req, res) {
 
   if (location) {
     filterQuery.location = {
-      "$regex": regex,
+      "$regex": location,
       "$options": "i",
     }
   }
-
-  if (Object.keys(filterQuery.age).length === 0) {
-    delete filterQuery["age"];
+  console.log(filterQuery);
+  if (Object.keys(filterQuery.dob).length === 0) {
+    delete filterQuery["dob"];
   }
   if (Object.keys(filterQuery.years).length === 0) {
     delete filterQuery["years"];
   }
 
   const volunteers = await getFilteredVolunteers(filterQuery);
+  console.log(volunteers);
   const interestVolunteers = [];
 
   if (interests) {
