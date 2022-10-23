@@ -40,13 +40,17 @@ const ProfileDetailModal = (props) => {
                 Go Back
             </button>
 
-            <button className={styles.button} onClick={() => {
+            {!props.isConnected && !props.viewOnly && <button className={styles.button} onClick={() => {
                 if (props.modalCallback){
                     props.modalCallback(false);
                 }
+
+                if (props.connectCallback){
+                    props.connectCallback();
+                }
             }}>
                 Connect
-            </button>
+            </button>}
             </div>
         </div>
     )
