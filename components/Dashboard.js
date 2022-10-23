@@ -10,16 +10,15 @@ const sleep = () => new Promise(
 
 const Dashboard = ({ role }) => {
 
-  const [profiles, setProfiles] = useState([])
+  const [profiles, setProfiles] = useState([]);
+  const lastField = role === "volunteer" ? "location" : "years";
 
-  console.log(profiles);
   useEffect(() => {
     (async () => {
       await sleep();
       const route = `${role}/get${role === "volunteer" ? "Organizations" : "Volunteers"}`
-      const records = await sendRequest(route, "GET");
-      console.log("Records:", records);
-      setProfiles(records);
+      const result = await sendRequest(route, "GET");
+      setProfiles(result.payload.volunteers);
     })();
   }, []);
 
@@ -34,9 +33,14 @@ const Dashboard = ({ role }) => {
     {img: imgURL, name: propName, job:propJob, exp: propExp}
   ]
 
+  // {profiles.map((profile) => (
+  //   <ProfileCard key={profile.id} img={imgURL} name={`${profile.firstName} ${profile.lastName}`} job={profile.interests[0]} exp={profile[lastField]}
+  //        profile={profile} role={role === "volunteer" ? "organization" : "volunteer"} />
+  // ))}
+
   return (
     <div class={[styles.flexboxContainer]}>
-        {mockData.map((profile, index) => (
+      {mockData.map((profile, index) => (
           <ProfileCard key={index} img={profile.img} name={profile.name} job={profile.job} exp={profile.exp}/>
         ))}
     </div>
