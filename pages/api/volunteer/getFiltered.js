@@ -47,15 +47,15 @@ async function handler (req, res) {
     }
   }
 
-  if (filterQuery.age === {}) {
+  if (Object.keys(filterQuery.age).length === 0) {
     delete filterQuery["age"];
   }
-  if (filterQuery.years === {}) {
+  if (Object.keys(filterQuery.years).length === 0) {
     delete filterQuery["years"];
   }
-  console.log(filterQuery);
 
   const volunteers = await getFilteredVolunteers(filterQuery);
+  console.log(volunteers);
 
   if (interests) {
     filterQuery.interests = { "$in": interests }

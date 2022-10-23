@@ -7,14 +7,14 @@ async function handler (req, res) {
   `
   `
   const organization = await getOrganization(req.email)
-  const volunteerId = req.body.volunteer;
+  const volunteerId = req.body.id;
   const volunteer = await getVolunteerById(volunteerId);
 
   organization.volunteers.push(volunteerId);
-  await updateOrganization(req.email, organization);
+  await updateOrganization(req.email, { volunteers: organization.volunteers });
 
   volunteer.organizations.push(organization._id);
-  await updateVolunteer(volunteer.email, volunteer)
+  await updateVolunteer(volunteer.email, { organizations: volunteer.organizations });
 
   res.status(203).json({
     success: true,

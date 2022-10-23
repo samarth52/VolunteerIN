@@ -12,7 +12,9 @@ const LandingPage = () => {
 
     const createUser = async () => {
         const result = await sendRequest(`${role}/add`, "POST");
-        router.push(`/${role}/${result.new ? "profile" : "dashboard"}`);
+        console.log(result);
+        console.log(`/${role}/${result.payload.new ? "profile" : "dashboard"}`);
+        router.push(`/${role}/${result.payload.new ? "profile" : "dashboard"}`);
     }
     return (
     <div class={styles.fContainer}>

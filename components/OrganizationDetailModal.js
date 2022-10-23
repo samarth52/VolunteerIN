@@ -31,11 +31,7 @@ const OrganizationDetailModal = ({ organization }) => {
                 })}
             </div>
 
-            <div className={styles.buttonContainer}>
-            <button className={styles.button}>
-                Connect
-            </button>
-            </div>
+            <div className={styles.buttonContainer}></div>
         </div>
     )
 }

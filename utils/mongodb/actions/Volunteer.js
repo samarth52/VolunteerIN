@@ -16,8 +16,8 @@ const getFilteredVolunteers = async (filterQuery) => {
 }
 
 const getInterestedOrganizations = async (email) => {
-  const organizations = await Volunteer.findOne({ email }, "organizations").populate("organizations");
-  return organizations;
+  const volunteer = await Volunteer.findOne({ email }, "organizations").populate("organizations");
+  return volunteer.organizations;
 }
 
 const createVolunteer = async (email) => {

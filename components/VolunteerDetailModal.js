@@ -1,11 +1,17 @@
 import styles from "../styles/ProfileDetailModal.module.css";
 import React, {useState} from 'react'
 import { useRouter } from 'next/router'
+import sendRequest from "../utils/client/sendToBackend";
 
 
 const VolunteerDetailModal = ({ volunteer }) => {
     const router = useRouter();
     const profileImage = "https://media.graphassets.com/CqNntlMDRgKm9mYPIRNC";
+
+    const handleClick = async (event) => {
+        event.preventDefault();
+        const result = await sendRequest("organization/connectWithVolunteer", "PUT", { id: volunteer.id });
+    }
 
     return (
         <div className={styles.container}>
@@ -32,7 +38,7 @@ const VolunteerDetailModal = ({ volunteer }) => {
             </div>
 
             <div className={styles.buttonContainer}>
-            <button className={styles.button}>
+            <button className={styles.button} onClick={handleClick}>
                 Connect
             </button>
             </div>

@@ -6,8 +6,8 @@ const getOrganization = async (email) => {
 }
 
 const getInterestedVolunteers = async (email) => {
-  const volunteers = await Organization.findOne({ email }, "volunteers").populate("volunteers");
-  return volunteers;
+  const organization = await Organization.findOne({ email }, "volunteers").populate("volunteers");
+  return organization.volunteers;
 }
 
 const createOrganization = async (email) => {

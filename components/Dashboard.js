@@ -11,6 +11,7 @@ const sleep = () => new Promise(
 const Dashboard = ({ role, isExplore, filter }) => {
 
   const [profiles, setProfiles] = useState([]);
+  console.log('Profile', profiles);
   const lastField = role === "volunteer" ? "location" : "years";
 
   useEffect(() => {
@@ -19,17 +20,19 @@ const Dashboard = ({ role, isExplore, filter }) => {
         await sleep();
         const route = `${role}/get${role === "volunteer" ? "Organizations" : "Volunteers"}`
         const result = await sendRequest(route, "GET");
-        setProfiles(result.payload.volunteers);
+        setProfiles(result.payload);
       })();
     }
   }, []);
 
   useEffect(() => {
-    (async () => {
-      await sleep();
-      const result = await sendRequest("volunteer/getFiltered", "POST", filter);
-      setProfiles(result.payload.volunteers);
-    })();
+    if (filter) {
+      (async () => {
+        await sleep();
+        const result = await sendRequest("volunteer/getFiltered", "POST", filter);
+        setProfiles(result.payload);
+      })();
+    }
   }, [filter]);
 
   const imgURL = "https://i.ibb.co/1ncn6Hh/ngoLogo3.jpg"
@@ -43,16 +46,17 @@ const Dashboard = ({ role, isExplore, filter }) => {
     {img: imgURL, name: propName, job:propJob, exp: propExp}
   ]
 
-  // {profiles.map((profile) => (
-  //   <ProfileCard key={profile.id} img={imgURL} name={`${profile.firstName} ${profile.lastName}`} job={profile.interests[0]} exp={profile[lastField]}
-  //        profile={profile} role={role === "volunteer" ? "organization" : "volunteer"} />
+  // {mockData.map((profile, index) => (
+  //   <ProfileCard key={index} img={profile.img} name={profile.name} job={profile.job} exp={profile.exp}/>
   // ))}
+  
 
   return (
     <div class={[styles.flexboxContainer]}>
-      {mockData.map((profile, index) => (
-          <ProfileCard key={index} img={profile.img} name={profile.name} job={profile.job} exp={profile.exp}/>
-        ))}
+      {profiles.map((profile) => (
+        <ProfileCard key={profile.id} img={imgURL} name={`${profile.firstName} ${profile.lastName}`} job={profile.interests[0]} exp={profile[lastField]}
+          profile={profile} role={role === "volunteer" ? "organization" : "volunteer"} />
+      ))}
     </div>
   )
 }
