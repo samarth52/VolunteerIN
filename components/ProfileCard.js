@@ -60,5 +60,3 @@ const ProfileCard = ({img, name, job, exp}) => {
 }
 
 export default ProfileCard
-
-// "https://i.ibb.co/Y3QvCYc/ngoLogo2.jpg"

@@ -18,7 +18,7 @@ async function handler (req, res) {
     }
   `
 
-  const { ageMin, ageMax, yearsMin, yearsMax, interests, locations } = req.data;
+  const { ageMin, ageMax, yearsMin, yearsMax, interests, locations } = req.body;
 
   filterQuery = {
     age: {},

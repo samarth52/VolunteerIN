@@ -52,4 +52,5 @@ const ProfileDetailModal = (props) => {
     )
 }
 
+
 export default ProfileDetailModal;
