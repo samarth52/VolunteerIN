@@ -20,7 +20,7 @@ const Dashboard = () => {
   return (
     <div class={[styles.flexboxContainer]}>
         {mockData.map((profile, index) => (
-          <ProfileCard key={index} img={profile.img} name={profile.name} job={profile.job} exp={profile.exp}/>
+          <ProfileCard viewOnly={true} key={index} img={profile.img} name={profile.name} job={profile.job} exp={profile.exp}/>
         ))}
     </div>
   )

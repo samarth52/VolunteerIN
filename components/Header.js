@@ -8,7 +8,7 @@ const Header = ({logoTitle}) => {
         <div class={styles.flexContainer}>
             <div class={styles.headerText}>Dashboard</div>
             <div class={styles.headerText}>Explore</div>
-            <div class={styles.headerText}>Login</div>
+            <div class={styles.headerText}>Logout</div>
         </div>
     </div>
   )

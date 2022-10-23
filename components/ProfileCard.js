@@ -3,8 +3,9 @@ import styles from "../styles/ProfileCard.module.css";
 import Modal from 'react-modal';
 import ProfileDetailModal from './ProfileDetailModal'
 
-const ProfileCard = ({img, name, job, exp}) => {
+const ProfileCard = ({img, name, job, exp, viewOnly}) => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [connected, setConnected] = React.useState(false);
   const openModal = () => {
     setIsOpen(true);
   }
@@ -23,7 +24,7 @@ const ProfileCard = ({img, name, job, exp}) => {
 
   return (
     <div>
-      <div class={styles.flexboxCandidate} onClick={openModal}>
+      <div class={connected ? styles.connected : styles.flexboxCandidate} onClick={openModal}>
     <img src={img} class={styles.imageStyle} width="100" height="100"/>
     <h2 class={styles.profileText}>{name}</h2>
     <h3 class={styles.profileText2}>{job}</h3>
@@ -35,6 +36,7 @@ const ProfileCard = ({img, name, job, exp}) => {
         style={customStyles}
       >
             <ProfileDetailModal
+          isConnected={connected}
           firstName="Samrat"
           lastName="Sahoo"
           interests={["Software Engineering", "Product", "Fundraising"]}
@@ -52,6 +54,10 @@ const ProfileCard = ({img, name, job, exp}) => {
       "years": 15}
           ]}
           modalCallback={(value) => setIsOpen(value)}
+          connectCallback={() => {
+            setConnected(true);
+          }}
+          viewOnly={viewOnly}
         ></ProfileDetailModal>
 
       </Modal>
