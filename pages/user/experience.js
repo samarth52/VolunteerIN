@@ -6,8 +6,6 @@ import sendRequest from "../../utils/client/sendToBackend";
 
 const UserExperiencePage = () => {
     const router = useRouter();
-    const role = router.pathname.split("/")[1];
-
     const [experiencesCount, setExperiencesCount] = useState(1); 
     const [experienceFunctions, setExperienceFunctions] = useState({});
 
@@ -18,7 +16,7 @@ const UserExperiencePage = () => {
             experiences.push(experienceFunctions[i]());
         }
         await sendRequest("volunteer/initialUpdate", "PUT", { volunteer: { experiences } });
-        router.push(`/${role}/dashboard`);
+        router.push(`/volunteer/dashboard`);
     }
 
     return (

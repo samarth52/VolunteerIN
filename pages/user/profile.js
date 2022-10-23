@@ -9,8 +9,7 @@ import sendRequest from '../../utils/client/sendToBackend';
 
 const UserProfilePage = () => {
     const router = useRouter();
-    const role = router.pathname.split("/")[1];
- 
+    
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [years, setYears] = useState("0");
@@ -23,7 +22,7 @@ const UserProfilePage = () => {
         event.preventDefault();
         const volunteer = { firstName, lastName, years: Number.parseInt(years), location, dob, interests, description };
         await sendRequest("volunteer/initialUpdate", "PUT", { volunteer });
-        router.push(`/${role}/experience`);
+        router.push(`/volunteer/experience`);
     }
 
   return (

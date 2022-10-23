@@ -29,14 +29,18 @@ async function handler (req, res) {
       ...
     }
   `
-  const { organization } = req.data;
+  console.log(req.body);
+  const { organization } = req.body;
 
-  organization.projects.forEach(async (project, i) => {
-    organization.projects[i] = await createProject(project);
-  })
+  if (organization.projects) {
+    for (let i = 0; i < organization.projects.length; i++) {
+      organization.projects[i] = await createProject(project);
+    }
+  }
+
   await updateOrganization(req.email, organization);
   
-  res.status(204).json({
+  res.status(203).json({
     success: true,
     message: "Organization has been updated",
   });

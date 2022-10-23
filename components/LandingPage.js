@@ -11,7 +11,7 @@ const LandingPage = () => {
     const router = useRouter();
 
     const createUser = async () => {
-        const result = await sendRequest("volunteer/add", "POST");
+        const result = await sendRequest(`${role}/add`, "POST");
         console.log(result);
         // router.push(`/${role}/${result.new ? "profile" : "dashboard"}`);
         router.push(`/${role}/profile`);
