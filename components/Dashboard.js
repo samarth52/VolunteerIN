@@ -19,8 +19,8 @@ const Dashboard = () => {
 
   return (
     <div class={[styles.flexboxContainer]}>
-        {mockData.map((profile) => (
-          <ProfileCard img={profile.img} name={profile.name} job={profile.job} exp={profile.exp}/>
+        {mockData.map((profile, index) => (
+          <ProfileCard key={index} img={profile.img} name={profile.name} job={profile.job} exp={profile.exp}/>
         ))}
     </div>
   )

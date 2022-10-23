@@ -1,4 +1,4 @@
-import React, { useEffect, useEffect } from 'react'
+import React, { useState } from 'react'
 import styles from '../styles/LandingPage.module.css'
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useRouter } from 'next/router';
@@ -7,13 +7,14 @@ import sendRequest from "../utils/client/sendToBackend";
 
 const LandingPage = () => {
     const graphicURL = "https://i.ibb.co/6b2sJ5K/graphic-Landing-Page.png";
-    const [role, setRole] = useEffect("");
+    const [role, setRole] = useState("");
     const router = useRouter();
 
     const createUser = async () => {
         const result = await sendRequest("volunteer/add", "POST");
         console.log(result);
-        router.push(`/${role}/${result.new ? "profile" : "dashboard"}`);
+        // router.push(`/${role}/${result.new ? "profile" : "dashboard"}`);
+        router.push(`/${role}/profile`);
     }
     return (
     <div class={styles.fContainer}>
