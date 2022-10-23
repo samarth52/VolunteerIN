@@ -31,7 +31,7 @@ const LandingPage = () => {
                 What defines you best?
             </div>
             <img class={styles.buttonStyle} src="https://i.ibb.co/5LqcR4T/Volunteer-Button.png" width="240.625" height="76.25" onClick={() => {
-                setRole("user");
+                setRole("volunteer");
             }}/>
             <div class={styles.orFlex}>
                 <div>____________</div>
