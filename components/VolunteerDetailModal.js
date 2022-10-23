@@ -3,13 +3,11 @@ import React, {useState} from 'react'
 import { useRouter } from 'next/router'
 import sendRequest from "../utils/client/sendToBackend";
 
-
-const VolunteerDetailModal = ({ volunteer }) => {
+const VolunteerDetailModal = ({ volunteer, isConnected, modalCallback, connectCallback, viewOnly }) => {
     const router = useRouter();
     const profileImage = "https://media.graphassets.com/CqNntlMDRgKm9mYPIRNC";
 
     const handleClick = async (event) => {
-        event.preventDefault();
         const result = await sendRequest("organization/connectWithVolunteer", "PUT", { id: volunteer.id });
     }
 
@@ -38,9 +36,27 @@ const VolunteerDetailModal = ({ volunteer }) => {
             </div>
 
             <div className={styles.buttonContainer}>
-            <button className={styles.button} onClick={handleClick}>
-                Connect
+            <button className={styles.backButton} onClick={() => {
+                if (modalCallback){
+                    modalCallback(false);
+                }
+            }}>
+                Go Back
             </button>
+
+            {!isConnected && !viewOnly && <button className={styles.button} onClick={() => {
+                handleClick();
+
+                if (modalCallback){
+                    modalCallback(false);
+                }
+
+                if (connectCallback){
+                    connectCallback();
+                }
+            }}>
+                Connect
+            </button>}
             </div>
         </div>
     )

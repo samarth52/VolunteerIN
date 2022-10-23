@@ -4,8 +4,9 @@ import Modal from 'react-modal';
 import VolunteerDetailModal from './VolunteerDetailModal'
 import OrganizationDetailModal from './OrganizationDetailModal'
 
-const ProfileCard = ({ img, name, job, exp, profile, role }) => {
+const ProfileCard = ({ img, name, job, exp, viewOnly, profile, role }) => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [connected, setConnected] = React.useState(false);
   const openModal = () => {
     setIsOpen(true);
   }
@@ -17,14 +18,14 @@ const ProfileCard = ({ img, name, job, exp, profile, role }) => {
   const customStyles = {
     content: {
       display: "flex",
-      left: "25%",
-      width: "50%"
+      left: "16.5%",
+      width: "67%",
     },
   };
 
   return (
     <div>
-      <div class={styles.flexboxCandidate} onClick={openModal}>
+      <div class={connected ? styles.connected : styles.flexboxCandidate} onClick={openModal}>
     <img src={img} class={styles.imageStyle} width="100" height="100"/>
     <h2 class={styles.profileText}>{name}</h2>
     <h3 class={styles.profileText2}>{job}</h3>
@@ -36,9 +37,12 @@ const ProfileCard = ({ img, name, job, exp, profile, role }) => {
         style={customStyles}
       >
       
-      {role === "volunteer" ? <VolunteerDetailModal volunteer={profile}/> : <OrganizationDetailModal organization={profile}/>}
-
-      </Modal>
+      {role === "volunteer"
+      ? <VolunteerDetailModal volunteer={profile} isConnected={connected} modalCallback={(value) => setIsOpen(value)}
+          connectCallback={() => { setConnected(true) }} viewOnly={viewOnly}/>
+      : <OrganizationDetailModal organization={profile} isConnected={connected} modalCallback={(value) => setIsOpen(value)}
+      connectCallback={() => { setConnected(true) }} viewOnly={viewOnly}/>}
+    </Modal>
 </div>
   )
 }

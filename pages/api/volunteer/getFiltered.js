@@ -46,7 +46,7 @@ async function handler (req, res) {
       "$options": "i",
     }
   }
-  console.log(filterQuery);
+
   if (Object.keys(filterQuery.dob).length === 0) {
     delete filterQuery["dob"];
   }
@@ -55,21 +55,19 @@ async function handler (req, res) {
   }
 
   const volunteers = await getFilteredVolunteers(filterQuery);
-  console.log(volunteers);
   const interestVolunteers = [];
 
-  if (interests) {
-    const allVolunteers = await getAllVolunteers();
-
-    for (const individual of allVolunteers){
-      const filteredArray = individual.interests.filter(value => interests.includes(value));
-
-      if (filteredArray.length !== 0){
-        interestVolunteers.push(individual.populate("experiences"))
-      }
-    }
-  }
-  console.log(interestVolunteers);
+  // if (interests) {
+  //   const allVolunteers = await getAllVolunteers();
+  // 
+  //   for (const individual of allVolunteers){
+  //     const filteredArray = individual.interests.filter(value => interests.includes(value));
+  // 
+  //     if (filteredArray.length !== 0){
+  //       interestVolunteers.push(individual.populate("experiences"))
+  //     }
+  //   }
+  // }
   const combined = [...volunteers, ...interestVolunteers];
 
   res.status(200).json({

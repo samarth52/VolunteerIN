@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import { useRouter } from 'next/router'
 
 
-const OrganizationDetailModal = ({ organization }) => {
+const OrganizationDetailModal = ({ organization, isConnected, modalCallback, connectCallback, viewOnly }) => {
     const router = useRouter();
     const profileImage = "https://media.graphassets.com/CqNntlMDRgKm9mYPIRNC";
 
@@ -31,7 +31,27 @@ const OrganizationDetailModal = ({ organization }) => {
                 })}
             </div>
 
-            <div className={styles.buttonContainer}></div>
+            <div className={styles.buttonContainer}>
+                <button className={styles.backButton} onClick={() => {
+                    if (modalCallback){
+                        modalCallback(false);
+                    }
+                }}>
+                    Go Back
+                </button>
+
+                {!isConnected && !viewOnly && <button className={styles.button} onClick={() => {
+                    if (modalCallback){
+                        modalCallback(false);
+                    }
+
+                    if (connectCallback){
+                        connectCallback();
+                    }
+                }}>
+                    Connect
+                </button>}
+            </div>
         </div>
     )
 }

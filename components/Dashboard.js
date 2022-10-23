@@ -8,7 +8,7 @@ const sleep = () => new Promise(
   resolve => setTimeout(resolve, 1000)
 );
 
-const Dashboard = ({ role, isExplore, filter }) => {
+const Dashboard = ({ role, isExplore, filter, viewOnly }) => {
 
   const [profiles, setProfiles] = useState([]);
   const lastField = role === "volunteer" ? "location" : "years";
@@ -54,7 +54,7 @@ const Dashboard = ({ role, isExplore, filter }) => {
     <div class={[styles.flexboxContainer]}>
       {profiles.map((profile) => (
         <ProfileCard key={profile.id} img={imgURL} name={`${profile.firstName} ${profile.lastName}`} job={profile.interests[0]} exp={profile[lastField]}
-          profile={profile} role={role === "volunteer" ? "organization" : "volunteer"} />
+          profile={profile} role={role === "volunteer" ? "organization" : "volunteer"} viewOnly={viewOnly} />
       ))}
     </div>
   )

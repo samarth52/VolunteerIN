@@ -40,3 +40,19 @@
 .scrollPop{
     overflow-y:auto 
 }
+
+.connected{
+    display: flex;
+    flex-direction: column;
+    width: 15em;
+    height: 16em;
+    border: 2px solid lightgray;
+    margin: 10px;
+    border-radius: 15px;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: lightgray;
+    opacity: 0.5;
+    box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}

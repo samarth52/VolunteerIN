@@ -11,7 +11,7 @@ const ExplorePage = () => {
         <Header logoTitle="Explore Candidates"/>
         <FilterExplore setFilter={setFilter}/>
         <DashboardText text="Potential Candidates:"/>
-        <Dashboard role={"organization"} isExplore={true} filter={filter} />
+        <Dashboard role={"organization"} isExplore={true} filter={filter} viewOnly={false} />
     </div>
   )
 }

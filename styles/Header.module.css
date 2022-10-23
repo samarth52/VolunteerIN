@@ -30,7 +30,6 @@
     font-family: "Outfit", sans-serif;
     cursor: pointer;
 }
-
 .headerText:hover{
-    color: #C1E9FF
+    color: lightblue;
 }
