@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 const OrganizationDetailModal = ({ organization, isConnected, modalCallback, connectCallback, viewOnly }) => {
     const router = useRouter();
     const profileImage = "https://media.graphassets.com/CqNntlMDRgKm9mYPIRNC";
+    console.log(organization);
 
     return (
         <div className={styles.container}>

@@ -9,9 +9,7 @@ const sleep = () => new Promise(
 );
 
 const Dashboard = ({ role, isExplore, filter, viewOnly, isUserDashboard }) => {
-
   const [profiles, setProfiles] = useState([]);
-  const lastField = role === "volunteer" ? "location" : "years";
 
   useEffect(() => {
     if (!isExplore) {
@@ -35,26 +33,28 @@ const Dashboard = ({ role, isExplore, filter, viewOnly, isUserDashboard }) => {
   }, [filter]);
 
   const imgURL = "https://i.ibb.co/1ncn6Hh/ngoLogo3.jpg"
-  const propName = "Samrat Sahoo"
-  const propJob = "Software Engineer"
-  const propExp = "10 Years of Experience"
+  // const propName = "Samrat Sahoo"
+  // const propJob = "Software Engineer"
+  // const propExp = "10 Years of Experience"
 
-  const mockData = [
-    {img: imgURL, name: propName, job:propJob, exp: propExp},
-    {img: imgURL, name: propName, job:propJob, exp: propExp},
-    {img: imgURL, name: propName, job:propJob, exp: propExp}
-  ]
+  // const mockData = [
+  //   {img: imgURL, name: propName, job:propJob, exp: propExp},
+  //   {img: imgURL, name: propName, job:propJob, exp: propExp},
+  //   {img: imgURL, name: propName, job:propJob, exp: propExp}
+  // ]
 
   // {mockData.map((profile, index) => (
   //   <ProfileCard key={index} img={profile.img} name={profile.name} job={profile.job} exp={profile.exp}/>
   // ))}
-  
+
+  const lastField = role === "volunteer" ? "location" : "years";
 
   return (
     <div class={[profiles.length === 0 ? styles.notSelectedContainer : styles.flexboxContainer]}>
       {profiles.length !== 0 && profiles.map((profile) => (
-        <ProfileCard key={profile.id} img={imgURL} name={`${profile.firstName} ${profile.lastName}`} job={profile.interests[0]} exp={profile[lastField]}
-          profile={profile} role={role === "volunteer" ? "organization" : "volunteer"} viewOnly={viewOnly} />
+        <ProfileCard key={profile.id} img={imgURL} name={role === "volunteer" ? profile.name : `${profile.firstName} ${profile.lastName}`}
+          job={profile.interests[0]} exp={role === "volunteer" ? profile[lastField] : `${profile[lastField]} Years of Experience`} profile={profile} 
+          role={role === "volunteer" ? "organization" : "volunteer"} viewOnly={viewOnly} />
       ))}
 
       {profiles.length === 0 &&
