@@ -1,23 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import styles from "../../styles/UserProfile.module.css";
 import TextInput from '../../components/inputs/TextInput';
 import DateInput from '../../components/inputs/DateInput';
 import LongTextInput from '../../components/inputs/LongTextInput';
 import DropdownInput from '../../components/inputs/DropdownInput';
+import sendRequest from '../../utils/client/sendToBackend';
 
 const UserProfilePage = () => {
+    const router = useRouter();
+    const role = router.pathname.split("/")[1];
+ 
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
-    const [years, setYears] = useState(0);
+    const [years, setYears] = useState("0");
     const [location, setLocation] = useState("");
     const [dob, setDob] = useState("");
     const [interests, setInterests] = useState([]);
     const [description, setDescription] = useState("");
 
-    const handleClick = (event) => {
+    const handleClick = async (event) => {
         event.preventDefault();
-        const record = { firstName, lastName, years, location, dob, interests, description };
-        console.log(record);
+        const volunteer = { firstName, lastName, years: Number.parseInt(years), location, dob, interests, description };
+        await sendRequest("volunteer/initialUpdate", "PUT", { volunteer });
+        router.push(`/${role}/experience`);
     }
 
   return (
