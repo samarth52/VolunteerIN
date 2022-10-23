@@ -8,7 +8,7 @@ const sleep = () => new Promise(
   resolve => setTimeout(resolve, 1000)
 );
 
-const Dashboard = ({ role, isExplore, filter, viewOnly }) => {
+const Dashboard = ({ role, isExplore, filter, viewOnly, isUserDashboard }) => {
 
   const [profiles, setProfiles] = useState([]);
   const lastField = role === "volunteer" ? "location" : "years";
@@ -51,11 +51,18 @@ const Dashboard = ({ role, isExplore, filter, viewOnly }) => {
   
 
   return (
-    <div class={[styles.flexboxContainer]}>
-      {profiles.map((profile) => (
+    <div class={[profiles.length === 0 ? styles.notSelectedContainer : styles.flexboxContainer]}>
+      {profiles.length !== 0 && profiles.map((profile) => (
         <ProfileCard key={profile.id} img={imgURL} name={`${profile.firstName} ${profile.lastName}`} job={profile.interests[0]} exp={profile[lastField]}
           profile={profile} role={role === "volunteer" ? "organization" : "volunteer"} viewOnly={viewOnly} />
       ))}
+
+      {profiles.length === 0 &&
+        <div className={styles.notSelectedImage}>
+          <img className={styles.notSelectedImage} src="https://i.imgur.com/m2Y3bZW.png"/>
+          <div>The Search is On!</div>
+          {isUserDashboard && <div className={styles.subTextMargin}>Organizations are still searching for candidates.</div>}
+      </div>} 
     </div>
   )
 }
