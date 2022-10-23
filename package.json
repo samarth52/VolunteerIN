@@ -18,7 +18,9 @@
     "nodemailer": "^6.8.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-icons": "^4.6.0"
+    "react-icons": "^4.6.0",
+    "react-modal": "^3.16.1",
+    "reactjs-popup": "^2.0.5"
   },
   "devDependencies": {
     "eslint": "8.26.0",
