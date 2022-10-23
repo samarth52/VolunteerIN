@@ -29,12 +29,11 @@ async function handler (req, res) {
       ...
     }
   `
-  console.log(req.body);
   const { organization } = req.body;
 
   if (organization.projects) {
     for (let i = 0; i < organization.projects.length; i++) {
-      organization.projects[i] = await createProject(project);
+      organization.projects[i] = await createProject(organization.projects[i]);
     }
   }
 
