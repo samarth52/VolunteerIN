@@ -10,6 +10,11 @@ const getInterestedVolunteers = async (email) => {
   return organization.volunteers;
 }
 
+const getInterestedVolunteersId = async (email) => {
+  const organization = await Organization.findOne({ email }, "volunteers");
+  return organization.volunteers;
+}
+
 const createOrganization = async (email) => {
   const organization = await Organization.find({ email });
   if (organization.length === 0) {
@@ -31,6 +36,7 @@ const updateOrganization = async (email, details) => {
 export {
   getOrganization,
   getInterestedVolunteers,
+  getInterestedVolunteersId,
   createOrganization,
   updateOrganization,
 }
