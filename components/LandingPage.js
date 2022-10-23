@@ -1,23 +1,25 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useContext } from 'react'
+import RoleContext from "../contexts/role";
+
 import styles from '../styles/LandingPage.module.css'
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import auth from './../utils/firebase/firebaseClient'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
+import auth from './../utils/firebase/firebaseClient';
 import sendRequest from "../utils/client/sendToBackend";
 
 const LandingPage = () => {
-    const graphicURL = "https://i.ibb.co/6b2sJ5K/graphic-Landing-Page.png"
-    const [typeOfUser, setTypeOfUser] = useState("");
+    const graphicURL = "https://i.ibb.co/6b2sJ5K/graphic-Landing-Page.png";
+    const [role, setRole] = useContext(RoleContext);
     const router = useRouter();
 
     const createUser = async () => {
         const result = await sendRequest("volunteer/add", "POST");
         console.log(result);
-        router.push(`/${typeOfUser}/profile`);
+        router.push(`/${role}/${result.new ? "profile" : "dashboard"}`);
     }
     return (
     <div class={styles.fContainer}>
-        {!typeOfUser && <div class={styles.fItem}>
+        {!role && <div class={styles.fItem}>
             <div class={styles.logoStyle}>
                 <h2 class={styles.logoFirst}>VOLUNTEER</h2>
                 <h2 class={styles.logoNext}>in</h2>
@@ -30,7 +32,7 @@ const LandingPage = () => {
                 What defines you best?
             </div>
             <img class={styles.buttonStyle} src="https://i.ibb.co/5LqcR4T/Volunteer-Button.png" width="240.625" height="76.25" onClick={() => {
-                setTypeOfUser("user");
+                setRole("user");
             }}/>
             <div class={styles.orFlex}>
                 <div>____________</div>
@@ -38,14 +40,14 @@ const LandingPage = () => {
                 <div>____________</div>
             </div>
             <img class={styles.buttonStyle} src="https://i.ibb.co/wwMVZZ4/Organization-Button.png" width="250.625" height="76.25" onClick={() => {
-                setTypeOfUser("organization");
+                setRole("organization");
             }}/>
             <div class={styles.registerDefine}>
                 
             </div>
         </div>}
 
-        {typeOfUser && <div class={styles.fItemTwo}>
+        {role && <div class={styles.fItemTwo}>
             <div class={styles.logoStyle}>
                 <h2 class={styles.logoFirst}>VOLUNTEER</h2>
                 <h2 class={styles.logoNext}>in</h2>

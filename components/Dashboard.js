@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styles from "../styles/NGODashboard.module.css";
 import ProfileCard from './ProfileCard';
 
-const NGODashboard = () => {
+const Dashboard = () => {
 
   const [profiles, setProfiles] = useState([])
 
@@ -26,4 +26,4 @@ const NGODashboard = () => {
   )
 }
 
-export default NGODashboard
+export default Dashboard

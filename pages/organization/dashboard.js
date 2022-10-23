@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import RoleContext from "../../contexts/role";
 import Header from '../../components/Header'
 import DashboardText from '../../components/DashboardText'
-import NGODashboard from '../../components/NGODashboard'
+import Dashboard from '../../components/Dashboard'
 
 const DashboardWrapper = () => {
+  const [role, useRole] = useContext(RoleContext);
+  console.log(role);
   return (
     <div>
         <Header logoTitle="VolunteerIN"/>
         <DashboardText text="Candidates You Have Applied To:"/>
-        <NGODashboard/>
+        <Dashboard/>
     </div>
   )
 }
