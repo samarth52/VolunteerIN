@@ -3,7 +3,7 @@ import styles from "../styles/FilterExplore.module.css";
 import TextInput from './inputs/TextInput';
 import ExploreInput from './inputs/ExploreInput';
 
-const FilterExplore = () => {
+const FilterExplore = ({ setFilter }) => {
     const [ageMin, setAgeMin] = useState(null);
     const [ageMax, setAgeMax] = useState(null);
     const [location, setLocation] = useState(null);
@@ -12,7 +12,23 @@ const FilterExplore = () => {
 
     const handleClick = (event) => {
         event.preventDefault();
-        
+        const filter = {};
+        if (ageMin) {
+            filter.ageMin = Number.parseInt(ageMin);
+        }
+        if (ageMax) {
+            filter.ageMax = Number.parseInt(ageMax);
+        }
+        if (location) {
+            filter.location = location;
+        }
+        if (yearsMin) {
+            filter.yearsMin = Number.parseInt(yearsMin);
+        }
+        if (yearsMax) {
+            filter.yearsMax = Number.parseInt(yearsMax);
+        }
+        setFilter(filter);
     }
 
   return (

@@ -18,14 +18,14 @@ async function handler (req, res) {
     }
   `
 
-  const { ageMin, ageMax, yearsMin, yearsMax, interests, locations } = req.body;
+  const { ageMin, ageMax, yearsMin, yearsMax, interests, location } = req.body;
 
-  filterQuery = {
+  const filterQuery = {
     age: {},
     years: {},
   }
 
-  currDate = new Date();
+  const currDate = new Date();
   if (ageMin) {
     filterQuery.age["$gte"] = new Date(currDate.getFullYear() - ageMin, curr.getMonth(), curr.getDate());
   }
@@ -40,23 +40,31 @@ async function handler (req, res) {
     filterQuery.years["$lte"] = yearsMax;
   }
 
-  if (interest) {
-    filterQuery.interests = { "$in": interests }
-  }
-
-  if (locations) {
-    const regex = locations.join("|");
+  if (location) {
     filterQuery.location = {
       "$regex": regex,
       "$options": "i",
     }
   }
 
+  if (filterQuery.age === {}) {
+    delete filterQuery["age"];
+  }
+  if (filterQuery.years === {}) {
+    delete filterQuery["years"];
+  }
+  console.log(filterQuery);
+
   const volunteers = await getFilteredVolunteers(filterQuery);
+
+  if (interests) {
+    filterQuery.interests = { "$in": interests }
+  }
+
   res.status(200).json({
     success: true,
     payload: volunteers
   });
 }
 
-export default requestWrapper(handler, "GET");
+export default requestWrapper(handler, "POST");

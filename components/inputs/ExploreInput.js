@@ -6,7 +6,7 @@ const ExploreInput = (props) => {
     <div>
         <input className={styles.textInputStyle} placeholder={props.placeholder} onChange={(e) => {
           if (props.callbackFunction){
-            props.callbackFunction(e.target.event)
+            props.callbackFunction(e.target.value)
           }
         }} />
     </div>

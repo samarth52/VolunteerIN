@@ -8,19 +8,29 @@ const sleep = () => new Promise(
   resolve => setTimeout(resolve, 1000)
 );
 
-const Dashboard = ({ role }) => {
+const Dashboard = ({ role, isExplore, filter }) => {
 
   const [profiles, setProfiles] = useState([]);
   const lastField = role === "volunteer" ? "location" : "years";
 
   useEffect(() => {
+    if (!isExplore) {
+      (async () => {
+        await sleep();
+        const route = `${role}/get${role === "volunteer" ? "Organizations" : "Volunteers"}`
+        const result = await sendRequest(route, "GET");
+        setProfiles(result.payload.volunteers);
+      })();
+    }
+  }, []);
+
+  useEffect(() => {
     (async () => {
       await sleep();
-      const route = `${role}/get${role === "volunteer" ? "Organizations" : "Volunteers"}`
-      const result = await sendRequest(route, "GET");
+      const result = await sendRequest("volunteer/getFiltered", "POST", filter);
       setProfiles(result.payload.volunteers);
     })();
-  }, []);
+  }, [filter]);
 
   const imgURL = "https://i.ibb.co/1ncn6Hh/ngoLogo3.jpg"
   const propName = "Samrat Sahoo"
