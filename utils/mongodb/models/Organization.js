@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import { INTEREST_ENUM } from "../../serverConstants";
 
 const organizationSchema = new mongoose.Schema({
@@ -24,13 +24,13 @@ const organizationSchema = new mongoose.Schema({
   ],
   volunteers: [
     {
-      type: mongoose.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "Volunteer",
     }
   ],
   projects: [
     {
-      type: mongoose.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "Project",
     },
   ]

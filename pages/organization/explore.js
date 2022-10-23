@@ -1,16 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import DashboardText from '../../components/DashboardText'
 import FilterExplore from '../../components/FilterExplore'
 import Header from '../../components/Header'
-import NGODashboard from '../../components/NGODashboard'
+import Dashboard from '../../components/Dashboard'
 
 const ExplorePage = () => {
+  const [filter, setFilter] = useState({});
   return (
     <div>
         <Header logoTitle="Explore Candidates"/>
-        <FilterExplore />
+        <FilterExplore setFilter={setFilter}/>
         <DashboardText text="Potential Candidates:"/>
-        <NGODashboard />
+        <Dashboard role={"organization"} isExplore={true} isUserDashboard={false} filter={filter} viewOnly={false} />
     </div>
   )
 }

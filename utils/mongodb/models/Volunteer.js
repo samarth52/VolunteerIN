@@ -25,13 +25,13 @@ const volunteerSchema = new mongoose.Schema({
   ],
   organizations: [
     {
-      type: mongoose.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "Organization",
     }
   ],
   experiences: [
     {
-      type: mongoose.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "Experience",
     },
   ],

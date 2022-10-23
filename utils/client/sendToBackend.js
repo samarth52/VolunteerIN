@@ -5,11 +5,11 @@ const sendRequest = async (route, method, data = {}) => {
   const headers = { idToken };
   route = `/api/${route}`;
 
-  let request;
+  let result;
   if (method === "GET") {
-    request = await fetch(route, { headers });
+    result = await fetch(route, { headers });
   } else if (method === "POST" || method === "PUT") {
-    request = await fetch(route, {
+    result = await fetch(route, {
       method,
       headers,
       body: JSON.stringify(data),
@@ -17,8 +17,7 @@ const sendRequest = async (route, method, data = {}) => {
   } else {
     console.log("Invalid Method");
   }
-  
-  return await request.json();
+  return await result.json();
 }
 
 export default sendRequest;

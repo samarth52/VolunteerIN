@@ -1,13 +1,13 @@
 import Organization from "../models/Organization";
 
 const getOrganization = async (email) => {
-  const organization = await Organization.find({ email }).populate("Project");
+  const organization = await Organization.findOne({ email }).populate("projects");
   return organization;
 }
 
 const getInterestedVolunteers = async (email) => {
-  const volunteers = await Organization.find({ email }, "volunteers").populate("Volunteer");
-  return volunteers;
+  const organization = await Organization.findOne({ email }, "volunteers").populate("volunteers");
+  return organization.volunteers;
 }
 
 const createOrganization = async (email) => {

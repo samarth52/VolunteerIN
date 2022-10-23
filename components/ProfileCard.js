@@ -1,9 +1,10 @@
 import React, {useState} from 'react'
 import styles from "../styles/ProfileCard.module.css";
 import Modal from 'react-modal';
-import ProfileDetailModal from './ProfileDetailModal'
+import VolunteerDetailModal from './VolunteerDetailModal'
+import OrganizationDetailModal from './OrganizationDetailModal'
 
-const ProfileCard = ({img, name, job, exp, viewOnly}) => {
+const ProfileCard = ({ img, name, job, exp, viewOnly, profile, role }) => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [connected, setConnected] = React.useState(false);
   const openModal = () => {
@@ -35,34 +36,36 @@ const ProfileCard = ({img, name, job, exp, viewOnly}) => {
         onRequestClose={closeModal}
         style={customStyles}
       >
-            <ProfileDetailModal
-          isConnected={connected}
-          firstName="Samrat"
-          lastName="Sahoo"
-          interests={["Software Engineering", "Product", "Fundraising"]}
-          yearsOfExperience="10"
-          description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-          profileImage="https://media.graphassets.com/CqNntlMDRgKm9mYPIRNC"
-          experiences={[
-            {organization: "Healing4Heroes",
-          title: "Engineering Manager",
-        "years": 15},
-        {organization: "Healing4Heroes",
-          title: "Engineering Manager",
-        "years": 15},{organization: "Healing4Heroes",
-        title: "Engineering Manager",
-      "years": 15}
-          ]}
-          modalCallback={(value) => setIsOpen(value)}
-          connectCallback={() => {
-            setConnected(true);
-          }}
-          viewOnly={viewOnly}
-        ></ProfileDetailModal>
-
-      </Modal>
+      
+      {role === "volunteer"
+      ? <VolunteerDetailModal volunteer={profile} isConnected={connected} modalCallback={(value) => setIsOpen(value)}
+          connectCallback={() => { setConnected(true) }} viewOnly={viewOnly}/>
+      : <OrganizationDetailModal organization={profile} isConnected={connected} modalCallback={(value) => setIsOpen(value)}
+      connectCallback={() => { setConnected(true) }} viewOnly={viewOnly}/>}
+    </Modal>
 </div>
   )
 }
 
 export default ProfileCard
+
+// "https://i.ibb.co/Y3QvCYc/ngoLogo2.jpg"
+
+// <VolunteerDetailModal
+//           firstName="Samrat"
+//           lastName="Sahoo"
+//           interests={["Software Engineering", "Product", "Fundraising"]}
+//           yearsOfExperience="10"
+//           description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+//           profileImage="https://media.graphassets.com/CqNntlMDRgKm9mYPIRNC"
+//           experiences={[
+//             {organization: "Healing4Heroes",
+//           title: "Engineering Manager",
+//         "years": 15},
+//         {organization: "Healing4Heroes",
+//           title: "Engineering Manager",
+//         "years": 15},{organization: "Healing4Heroes",
+//         title: "Engineering Manager",
+//       "years": 15}
+//           ]}
+//         ></VolunteerDetailModal>

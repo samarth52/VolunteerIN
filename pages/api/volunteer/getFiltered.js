@@ -1,5 +1,5 @@
 import requestWrapper from "../../../utils/middleware/wrapper";
-import { getFilteredVolunteers, updateVolunteer } from "../../../utils/mongodb/actions/Volunteer";
+import { getFilteredVolunteers, getAllVolunteers, updateVolunteer } from "../../../utils/mongodb/actions/Volunteer";
 import { createExperience } from "../../../utils/mongodb/actions/Experience";
 
 async function handler (req, res) {
@@ -18,19 +18,19 @@ async function handler (req, res) {
     }
   `
 
-  const { ageMin, ageMax, yearsMin, yearsMax, interests, locations } = req.body;
+  const { ageMin, ageMax, yearsMin, yearsMax, interests, location } = req.body;
 
-  filterQuery = {
-    age: {},
+  const filterQuery = {
+    dob: {},
     years: {},
   }
 
-  currDate = new Date();
+  const currDate = new Date();
   if (ageMin) {
-    filterQuery.age["$gte"] = new Date(currDate.getFullYear() - ageMin, curr.getMonth(), curr.getDate());
+    filterQuery.dob["$lte"] = new Date(currDate.getFullYear() - ageMin, currDate.getMonth(), currDate.getDate());
   }
   if (ageMax) {
-    filterQuery.age["$lte"] = new Date(currDate.getFullYear() - ageMax, curr.getMonth(), curr.getDate());
+    filterQuery.dob["$gte"] = new Date(currDate.getFullYear() - ageMax, currDate.getMonth(), currDate.getDate());
   }
 
   if (yearsMin) {
@@ -40,23 +40,40 @@ async function handler (req, res) {
     filterQuery.years["$lte"] = yearsMax;
   }
 
-  if (interest) {
-    filterQuery.interests = { "$in": interests }
-  }
-
-  if (locations) {
-    const regex = locations.join("|");
+  if (location) {
     filterQuery.location = {
-      "$regex": regex,
+      "$regex": location,
       "$options": "i",
     }
   }
 
+  if (Object.keys(filterQuery.dob).length === 0) {
+    delete filterQuery["dob"];
+  }
+  if (Object.keys(filterQuery.years).length === 0) {
+    delete filterQuery["years"];
+  }
+
   const volunteers = await getFilteredVolunteers(filterQuery);
+  const interestVolunteers = [];
+
+  // if (interests) {
+  //   const allVolunteers = await getAllVolunteers();
+  // 
+  //   for (const individual of allVolunteers){
+  //     const filteredArray = individual.interests.filter(value => interests.includes(value));
+  // 
+  //     if (filteredArray.length !== 0){
+  //       interestVolunteers.push(individual.populate("experiences"))
+  //     }
+  //   }
+  // }
+  const combined = [...volunteers, ...interestVolunteers];
+
   res.status(200).json({
     success: true,
-    payload: volunteers
+    payload: combined
   });
 }
 
-export default requestWrapper(handler, "GET");
+export default requestWrapper(handler, "POST");
