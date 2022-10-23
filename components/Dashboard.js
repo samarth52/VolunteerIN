@@ -1,10 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from "../styles/NGODashboard.module.css";
 import ProfileCard from './ProfileCard';
+import sendRequest from '../utils/client/sendToBackend';
+import auth from '../utils/firebase/firebaseClient';
 
-const Dashboard = () => {
+const sleep = () => new Promise(
+  resolve => setTimeout(resolve, 1000)
+);
+
+const Dashboard = ({ role }) => {
 
   const [profiles, setProfiles] = useState([])
+
+  console.log(profiles);
+  useEffect(() => {
+    (async () => {
+      await sleep();
+      const route = `${role}/get${role === "volunteer" ? "Organizations" : "Volunteers"}`
+      const records = await sendRequest(route, "GET");
+      console.log("Records:", records);
+      setProfiles(records);
+    })();
+  }, []);
 
   const imgURL = "https://i.ibb.co/1ncn6Hh/ngoLogo3.jpg"
   const propName = "Samrat Sahoo"

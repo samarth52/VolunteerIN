@@ -2,7 +2,7 @@ import React from 'react'
 import DashboardText from '../../components/DashboardText'
 import FilterExplore from '../../components/FilterExplore'
 import Header from '../../components/Header'
-import NGODashboard from '../../components/NGODashboard'
+import Dashboard from '../../components/Dashboard'
 
 const ExplorePage = () => {
   return (
@@ -10,7 +10,7 @@ const ExplorePage = () => {
         <Header logoTitle="Explore Candidates"/>
         <FilterExplore />
         <DashboardText text="Potential Candidates:"/>
-        <NGODashboard />
+        <Dashboard />
     </div>
   )
 }

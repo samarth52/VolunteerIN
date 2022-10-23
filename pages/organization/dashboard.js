@@ -8,7 +8,7 @@ const DashboardWrapper = () => {
     <div>
         <Header logoTitle="VolunteerIN"/>
         <DashboardText text="Candidates You Have Applied To:"/>
-        <Dashboard/>
+        <Dashboard role={"organization"}/>
     </div>
   )
 }

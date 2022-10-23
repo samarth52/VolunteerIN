@@ -14,13 +14,15 @@ export default function requestWrapper(handler, method) {
     try {
       req.email = await verifyToken(idToken);
       await mongoConnect();
-      req.body = JSON.parse(req.body);
+      if (req.body !== "") {
+        req.body = JSON.parse(req.body);
+      }
       return handler(req, res);
     } catch (error) {
       console.log(error);
       return res.status(401).json({
         success: false,
-        message: "Authentication Failure: User is not logged in",
+        message: "Server Error: Try again or log in",
       });
     };
   };
