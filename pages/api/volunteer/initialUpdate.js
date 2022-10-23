@@ -32,10 +32,11 @@ async function handler (req, res) {
     }
   `
   const { volunteer } = req.body;
-
-  volunteer.experiences?.forEach(async (experience, i) => {
-    volunteer.experiences[i] = await createExperience(experience);
-  })
+  if (volunteer.experiences) {
+    for (let i = 0; i < volunteer.experiences.length; i++) {
+      volunteer.experiences[i] = await createExperience(volunteer.experiences[i]);
+    }
+  }
   await updateVolunteer(req.email, volunteer);
   
   res.status(203).json({
