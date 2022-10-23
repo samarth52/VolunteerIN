@@ -1,6 +1,4 @@
-import React, { useEffect, useContext } from 'react'
-import RoleContext from "../contexts/role";
-
+import React, { useEffect, useEffect } from 'react'
 import styles from '../styles/LandingPage.module.css'
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useRouter } from 'next/router';
@@ -9,7 +7,7 @@ import sendRequest from "../utils/client/sendToBackend";
 
 const LandingPage = () => {
     const graphicURL = "https://i.ibb.co/6b2sJ5K/graphic-Landing-Page.png";
-    const [role, setRole] = useContext(RoleContext);
+    const [role, setRole] = useEffect("");
     const router = useRouter();
 
     const createUser = async () => {

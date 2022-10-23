@@ -1,12 +1,7 @@
 import '../styles/globals.css'
-import { RoleProvider } from "../contexts/role";
 
 function MyApp({ Component, pageProps }) {
-  return (
-    <RoleProvider>
-      <Component {...pageProps} />
-    </RoleProvider>
-  )
+  return <Component {...pageProps} />
 }
 
 export default MyApp
