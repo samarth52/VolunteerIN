@@ -1,10 +1,7 @@
-import styles from '../styles/Home.module.css'
-import LandingPage from '../components/LandingPage'
-
+import 'reactjs-popup/dist/index.css';
+import LandingPage from '../components/LandingPage';
 export default function Home() {
   return (
-    <div className={styles.container}>
-        <LandingPage/>
-    </div>
+    <LandingPage/>
   )
 }

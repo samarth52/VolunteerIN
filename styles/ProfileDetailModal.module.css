@@ -1,0 +1,89 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Outfit';
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    font-size: 1.2em;
+    row-gap: 30px;
+}
+
+.profileDescriptionAndOverviewContainer{
+    display: flex;
+    flex-direction: row;
+    column-gap: 30px;
+}
+
+.overviewContainer{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2px;
+}
+
+.profileImage{
+    border-radius: 100px;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+}
+
+.buttonContainer{
+    display: flex;
+    justify-content: flex-end;
+}
+.button{
+    background-color: #022247;
+    padding: 10px;
+    color: white;
+    font-family: 'Outfit';
+    font-size: 1.1em;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.backButton{
+    background-color: #472302;
+    padding: 10px;
+    color: white;
+    font-family: 'Outfit';
+    font-size: 1.1em;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+
+}
+.description{
+    flex: 4
+}
+
+.name{
+    font-weight: bold;
+}
+
+.experienceContainer{
+    display: flex;
+    justify-content: flex-start;
+    column-gap: 5%;
+    flex-wrap: wrap;
+}
+
+.organizationText{
+    font-weight: bold;
+}
+
+.individualExperience{
+    display: flex;
+    flex-direction: column;
+    row-gap: 2px;
+    margin-bottom: 20px;
+}
+.overviewItem{
+    margin-top: 5px;
+}
+
+.boldSubtitle{
+    font-weight: bold;
+}
