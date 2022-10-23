@@ -16,8 +16,8 @@ const ProfileCard = ({img, name, job, exp}) => {
   const customStyles = {
     content: {
       display: "flex",
-      left: "25%",
-      width: "50%"
+      left: "16.5%",
+      width: "67%",
     },
   };
 
