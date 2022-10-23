@@ -1,17 +1,40 @@
 import React, {useState} from 'react'
 import styles from "../styles/ProfileCard.module.css";
-import Popup from 'reactjs-popup';
+import Modal from 'react-modal';
 import ProfileDetailModal from './ProfileDetailModal'
 
 const ProfileCard = ({img, name, job, exp}) => {
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const openModal = () => {
+    setIsOpen(true);
+  }
+
+  const closeModal = () => {
+    setIsOpen(false);
+  }
+
+  const customStyles = {
+    content: {
+      display: "flex",
+      left: "25%",
+      width: "50%"
+    },
+  };
+
   return (
-    <Popup trigger={<div class={styles.flexboxCandidate}>
+    <div>
+      <div class={styles.flexboxCandidate} onClick={openModal}>
     <img src={img} class={styles.imageStyle} width="100" height="100"/>
     <h2 class={styles.profileText}>{name}</h2>
     <h3 class={styles.profileText2}>{job}</h3>
     <h3 class={styles.profileText3}>{exp}</h3>
-</div>} modal>
-    <ProfileDetailModal
+    </div>
+    <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+      >
+            <ProfileDetailModal
           firstName="Samrat"
           lastName="Sahoo"
           interests={["Software Engineering", "Product", "Fundraising"]}
@@ -29,7 +52,9 @@ const ProfileCard = ({img, name, job, exp}) => {
       "years": 15}
           ]}
         ></ProfileDetailModal>
-</Popup>
+
+      </Modal>
+</div>
   )
 }
 
